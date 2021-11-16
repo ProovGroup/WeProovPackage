@@ -9,24 +9,40 @@ let package = Package(
         // Products define the executables and libraries a package produces, and make them visible to other packages.
         .library(
             name: "WeProovPackage",
-            targets: ["WeProovSDK"]),
+            targets: ["WeProovSDK",
+                      "FLAnimatedImage",
+                      "JTMaterialSpinner",
+                      "MBProgressHUD",
+                      "Pods_WeProovSDK_Base_WeProovSDK",
+                      "SnapKit",
+                      "SwiftRichString",
+                      "SwiftyDraw",
+                      "Then",]),
     ],
     dependencies: [
-        // Dependencies declare other packages that this package depends on. swift 5.3
-        // .package(url: /* package url */, from: "1.0.0"),
-        .package(url: "https://github.com/Flipboard/FLAnimatedImage.git", .branch("master")),/*.exact("1.0")),*/
-        .package(url: "https://github.com/ProovGroup/JTMaterialSpinner.git", .branch("Swift_v5")),/*.exact("3.0")),*/
-        .package(url: "https://github.com/jdg/MBProgressHUD.git", .branch("master")),/*.exact("1.2")),*/
-        .package(url: "https://github.com/SnapKit/SnapKit.git", .branch("develop")),/*.exact("4.0")),*/
-        .package(url: "https://github.com/malcommac/SwiftRichString.git", .branch("master")),/*.exact("")),*/
-        .package(url: "https://github.com/devxoul/Then.git", .branch("master")),/*.exact("2.7.0")),*/
-        .package(url: "https://github.com/Awalz/SwiftyDraw.git", .branch("master"))/*.exact("2.1.2"))*/
+//        // Dependencies declare other packages that this package depends on. swift 5.3
+//        // .package(url: /* package url */, from: "1.0.0"),
+//        .package(url: "https://github.com/Flipboard/FLAnimatedImage.git", .branch("master")),/*.exact("1.0")),*/
+//        .package(url: "https://github.com/ProovGroup/JTMaterialSpinner.git", .branch("Swift_v5")),/*.exact("3.0")),*/
+//        .package(url: "https://github.com/jdg/MBProgressHUD.git", .branch("master")),/*.exact("1.2")),*/
+//        .package(url: "https://github.com/SnapKit/SnapKit.git", .branch("develop")),/*.exact("4.0")),*/
+//        .package(url: "https://github.com/malcommac/SwiftRichString.git", .branch("master")),/*.exact("")),*/
+//        .package(url: "https://github.com/devxoul/Then.git", .branch("master")),/*.exact("2.7.0")),*/
+//        .package(url: "https://github.com/Awalz/SwiftyDraw.git", .branch("master"))/*.exact("2.1.2"))*/
     ],
     targets: [
         // Targets are the basic building blocks of a package. A target can define a module or a test suite.
         // Targets can depend on other targets in this package, and on products in packages this package depends on.
 //        .target(name: "WeProovSDK", dependencies: [], path: "./Sources/WeProovSDK.xcframework", exclude: [], sources: nil, publicHeadersPath: nil),
         .binaryTarget(name: "WeProovSDK", path: "./Sources/WeProovSDK.xcframework"),
+        .binaryTarget(name: "FLAnimatedImage", path: "./Sources/FLAnimatedImage.xcframework"),
+        .binaryTarget(name: "JTMaterialSpinner", path: "./Sources/JTMaterialSpinner.xcframework"),
+        .binaryTarget(name: "MBProgressHUD", path: "./Sources/MBProgressHUD.xcframework"),
+        .binaryTarget(name: "Pods_WeProovSDK_Base_WeProovSDK", path: "./Sources/Pods_WeProovSDK_Base_WeProovSDK.xcframework"),
+        .binaryTarget(name: "SnapKit", path: "./Sources/SnapKit.xcframework"),
+        .binaryTarget(name: "SwiftRichString", path: "./Sources/SwiftRichString.xcframework"),
+        .binaryTarget(name: "SwiftyDraw", path: "./Sources/SwiftyDraw.xcframework"),
+        .binaryTarget(name: "Then", path: "./Sources/Then.xcframework")
 
     ]
 )
