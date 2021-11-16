@@ -1,0 +1,70 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "FLAnimatedImage",
+        "repositoryURL": "https://github.com/Flipboard/FLAnimatedImage.git",
+        "state": {
+          "branch": "master",
+          "revision": "072334318e5ae12adebfd2429ba1316ff0541468",
+          "version": null
+        }
+      },
+      {
+        "package": "JTMaterialSpinner",
+        "repositoryURL": "https://github.com/ProovGroup/JTMaterialSpinner.git",
+        "state": {
+          "branch": "Swift_v5",
+          "revision": "7e9f531417792f857de2274c4111e99726b3f901",
+          "version": null
+        }
+      },
+      {
+        "package": "MBProgressHUD",
+        "repositoryURL": "https://github.com/jdg/MBProgressHUD.git",
+        "state": {
+          "branch": "master",
+          "revision": "c843e4c86d320a11552898646effa8000042ab16",
+          "version": null
+        }
+      },
+      {
+        "package": "SnapKit",
+        "repositoryURL": "https://github.com/SnapKit/SnapKit.git",
+        "state": {
+          "branch": "develop",
+          "revision": "466db39ee4ef32b0f7c8cd9f009aaf42f80beace",
+          "version": null
+        }
+      },
+      {
+        "package": "SwiftRichString",
+        "repositoryURL": "https://github.com/malcommac/SwiftRichString.git",
+        "state": {
+          "branch": "master",
+          "revision": "e0b72d5c96968d7802856d2be096202c9798e8d1",
+          "version": null
+        }
+      },
+      {
+        "package": "SwiftyDraw",
+        "repositoryURL": "https://github.com/Awalz/SwiftyDraw.git",
+        "state": {
+          "branch": "master",
+          "revision": "11fae521ff07d5388cc2fe5b6960b1c65ce3f200",
+          "version": null
+        }
+      },
+      {
+        "package": "Then",
+        "repositoryURL": "https://github.com/devxoul/Then.git",
+        "state": {
+          "branch": "master",
+          "revision": "e421a7b3440a271834337694e6050133a3958bc7",
+          "version": null
+        }
+      }
+    ]
+  },
+  "version": 1
+}
