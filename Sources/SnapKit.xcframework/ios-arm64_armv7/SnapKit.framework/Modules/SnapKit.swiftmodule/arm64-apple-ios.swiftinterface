@@ -1,0 +1,727 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.4.2 effective-4.2 (swiftlang-1205.0.28.2 clang-1205.0.19.57)
+// swift-module-flags: -target arm64-apple-ios10.0 -enable-objc-interop -enable-library-evolution -swift-version 4.2 -enforce-exclusivity=checked -O -module-name SnapKit
+import Foundation
+@_exported import SnapKit
+import Swift
+import UIKit
+@_hasMissingDesignatedInitializers final public class Constraint {
+  final public var layoutConstraints: [SnapKit.LayoutConstraint]
+  final public var isActive: Swift.Bool {
+    get
+    set
+  }
+  final public func install()
+  final public func uninstall()
+  final public func activate()
+  final public func deactivate()
+  @discardableResult
+  final public func update(offset: SnapKit.ConstraintOffsetTarget) -> SnapKit.Constraint
+  @discardableResult
+  final public func update(inset: SnapKit.ConstraintInsetTarget) -> SnapKit.Constraint
+  @discardableResult
+  final public func update(priority: SnapKit.ConstraintPriorityTarget) -> SnapKit.Constraint
+  @discardableResult
+  final public func update(priority: SnapKit.ConstraintPriority) -> SnapKit.Constraint
+  final public func updateOffset(amount: SnapKit.ConstraintOffsetTarget)
+  final public func updateInsets(amount: SnapKit.ConstraintInsetTarget)
+  final public func updatePriority(amount: SnapKit.ConstraintPriorityTarget)
+  final public func updatePriorityRequired()
+  final public func updatePriorityHigh()
+  final public func updatePriorityMedium()
+  final public func updatePriorityLow()
+  @objc deinit
+}
+public typealias ConstraintInterfaceLayoutDirection = UIKit.UIUserInterfaceLayoutDirection
+public struct ConstraintConfig {
+  public static var interfaceLayoutDirection: SnapKit.ConstraintInterfaceLayoutDirection
+}
+public protocol ConstraintConstantTarget {
+}
+extension CGPoint : SnapKit.ConstraintConstantTarget {
+}
+extension CGSize : SnapKit.ConstraintConstantTarget {
+}
+extension UIEdgeInsets : SnapKit.ConstraintConstantTarget {
+}
+@_hasMissingDesignatedInitializers public class ConstraintDescription {
+  @objc deinit
+}
+public protocol ConstraintDSL {
+  var target: Swift.AnyObject? { get }
+  func setLabel(_ value: Swift.String?)
+  func label() -> Swift.String?
+}
+extension ConstraintDSL {
+  public func setLabel(_ value: Swift.String?)
+  public func label() -> Swift.String?
+}
+public protocol ConstraintBasicAttributesDSL : SnapKit.ConstraintDSL {
+}
+extension ConstraintBasicAttributesDSL {
+  public var left: SnapKit.ConstraintItem {
+    get
+  }
+  public var top: SnapKit.ConstraintItem {
+    get
+  }
+  public var right: SnapKit.ConstraintItem {
+    get
+  }
+  public var bottom: SnapKit.ConstraintItem {
+    get
+  }
+  public var leading: SnapKit.ConstraintItem {
+    get
+  }
+  public var trailing: SnapKit.ConstraintItem {
+    get
+  }
+  public var width: SnapKit.ConstraintItem {
+    get
+  }
+  public var height: SnapKit.ConstraintItem {
+    get
+  }
+  public var centerX: SnapKit.ConstraintItem {
+    get
+  }
+  public var centerY: SnapKit.ConstraintItem {
+    get
+  }
+  public var edges: SnapKit.ConstraintItem {
+    get
+  }
+  public var size: SnapKit.ConstraintItem {
+    get
+  }
+  public var center: SnapKit.ConstraintItem {
+    get
+  }
+}
+public protocol ConstraintAttributesDSL : SnapKit.ConstraintBasicAttributesDSL {
+}
+extension ConstraintAttributesDSL {
+  public var baseline: SnapKit.ConstraintItem {
+    get
+  }
+  @available(iOS 8.0, macOS 10.11, *)
+  public var lastBaseline: SnapKit.ConstraintItem {
+    get
+  }
+  @available(iOS 8.0, macOS 10.11, *)
+  public var firstBaseline: SnapKit.ConstraintItem {
+    get
+  }
+  @available(iOS 8.0, *)
+  public var leftMargin: SnapKit.ConstraintItem {
+    get
+  }
+  @available(iOS 8.0, *)
+  public var topMargin: SnapKit.ConstraintItem {
+    get
+  }
+  @available(iOS 8.0, *)
+  public var rightMargin: SnapKit.ConstraintItem {
+    get
+  }
+  @available(iOS 8.0, *)
+  public var bottomMargin: SnapKit.ConstraintItem {
+    get
+  }
+  @available(iOS 8.0, *)
+  public var leadingMargin: SnapKit.ConstraintItem {
+    get
+  }
+  @available(iOS 8.0, *)
+  public var trailingMargin: SnapKit.ConstraintItem {
+    get
+  }
+  @available(iOS 8.0, *)
+  public var centerXWithinMargins: SnapKit.ConstraintItem {
+    get
+  }
+  @available(iOS 8.0, *)
+  public var centerYWithinMargins: SnapKit.ConstraintItem {
+    get
+  }
+  @available(iOS 8.0, *)
+  public var margins: SnapKit.ConstraintItem {
+    get
+  }
+  @available(iOS 8.0, *)
+  public var centerWithinMargins: SnapKit.ConstraintItem {
+    get
+  }
+}
+public typealias ConstraintInsets = UIKit.UIEdgeInsets
+public protocol ConstraintInsetTarget : SnapKit.ConstraintConstantTarget {
+}
+extension Int : SnapKit.ConstraintInsetTarget {
+}
+extension UInt : SnapKit.ConstraintInsetTarget {
+}
+extension Float : SnapKit.ConstraintInsetTarget {
+}
+extension Double : SnapKit.ConstraintInsetTarget {
+}
+extension CGFloat : SnapKit.ConstraintInsetTarget {
+}
+extension UIEdgeInsets : SnapKit.ConstraintInsetTarget {
+}
+@_hasMissingDesignatedInitializers final public class ConstraintItem {
+  @objc deinit
+}
+public func == (lhs: SnapKit.ConstraintItem, rhs: SnapKit.ConstraintItem) -> Swift.Bool
+@available(iOS 9.0, macOS 10.11, *)
+extension UILayoutGuide {
+  public var snp: SnapKit.ConstraintLayoutGuideDSL {
+    get
+  }
+}
+@available(iOS 9.0, *)
+public typealias ConstraintLayoutGuide = UIKit.UILayoutGuide
+@available(iOS 9.0, macOS 10.11, *)
+public struct ConstraintLayoutGuideDSL : SnapKit.ConstraintAttributesDSL {
+  @discardableResult
+  public func prepareConstraints(_ closure: (SnapKit.ConstraintMaker) -> Swift.Void) -> [SnapKit.Constraint]
+  public func makeConstraints(_ closure: (SnapKit.ConstraintMaker) -> Swift.Void)
+  public func remakeConstraints(_ closure: (SnapKit.ConstraintMaker) -> Swift.Void)
+  public func updateConstraints(_ closure: (SnapKit.ConstraintMaker) -> Swift.Void)
+  public func removeConstraints()
+  public var target: Swift.AnyObject? {
+    get
+  }
+}
+@available(iOS 8.0, *)
+public typealias ConstraintLayoutSupport = UIKit.UILayoutSupport
+@available(iOS 8.0, *)
+public struct ConstraintLayoutSupportDSL : SnapKit.ConstraintDSL {
+  public var target: Swift.AnyObject? {
+    get
+  }
+  public var top: SnapKit.ConstraintItem {
+    get
+  }
+  public var bottom: SnapKit.ConstraintItem {
+    get
+  }
+  public var height: SnapKit.ConstraintItem {
+    get
+  }
+}
+@_hasMissingDesignatedInitializers public class ConstraintMaker {
+  public var left: SnapKit.ConstraintMakerExtendable {
+    get
+  }
+  public var top: SnapKit.ConstraintMakerExtendable {
+    get
+  }
+  public var bottom: SnapKit.ConstraintMakerExtendable {
+    get
+  }
+  public var right: SnapKit.ConstraintMakerExtendable {
+    get
+  }
+  public var leading: SnapKit.ConstraintMakerExtendable {
+    get
+  }
+  public var trailing: SnapKit.ConstraintMakerExtendable {
+    get
+  }
+  public var width: SnapKit.ConstraintMakerExtendable {
+    get
+  }
+  public var height: SnapKit.ConstraintMakerExtendable {
+    get
+  }
+  public var centerX: SnapKit.ConstraintMakerExtendable {
+    get
+  }
+  public var centerY: SnapKit.ConstraintMakerExtendable {
+    get
+  }
+  public var baseline: SnapKit.ConstraintMakerExtendable {
+    get
+  }
+  public var lastBaseline: SnapKit.ConstraintMakerExtendable {
+    get
+  }
+  @available(iOS 8.0, macOS 10.11, *)
+  public var firstBaseline: SnapKit.ConstraintMakerExtendable {
+    get
+  }
+  @available(iOS 8.0, *)
+  public var leftMargin: SnapKit.ConstraintMakerExtendable {
+    get
+  }
+  @available(iOS 8.0, *)
+  public var rightMargin: SnapKit.ConstraintMakerExtendable {
+    get
+  }
+  @available(iOS 8.0, *)
+  public var topMargin: SnapKit.ConstraintMakerExtendable {
+    get
+  }
+  @available(iOS 8.0, *)
+  public var bottomMargin: SnapKit.ConstraintMakerExtendable {
+    get
+  }
+  @available(iOS 8.0, *)
+  public var leadingMargin: SnapKit.ConstraintMakerExtendable {
+    get
+  }
+  @available(iOS 8.0, *)
+  public var trailingMargin: SnapKit.ConstraintMakerExtendable {
+    get
+  }
+  @available(iOS 8.0, *)
+  public var centerXWithinMargins: SnapKit.ConstraintMakerExtendable {
+    get
+  }
+  @available(iOS 8.0, *)
+  public var centerYWithinMargins: SnapKit.ConstraintMakerExtendable {
+    get
+  }
+  public var edges: SnapKit.ConstraintMakerExtendable {
+    get
+  }
+  public var size: SnapKit.ConstraintMakerExtendable {
+    get
+  }
+  public var center: SnapKit.ConstraintMakerExtendable {
+    get
+  }
+  @available(iOS 8.0, *)
+  public var margins: SnapKit.ConstraintMakerExtendable {
+    get
+  }
+  @available(iOS 8.0, *)
+  public var centerWithinMargins: SnapKit.ConstraintMakerExtendable {
+    get
+  }
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class ConstraintMakerEditable : SnapKit.ConstraintMakerPriortizable {
+  @discardableResult
+  public func multipliedBy(_ amount: SnapKit.ConstraintMultiplierTarget) -> SnapKit.ConstraintMakerEditable
+  @discardableResult
+  public func dividedBy(_ amount: SnapKit.ConstraintMultiplierTarget) -> SnapKit.ConstraintMakerEditable
+  @discardableResult
+  public func offset(_ amount: SnapKit.ConstraintOffsetTarget) -> SnapKit.ConstraintMakerEditable
+  @discardableResult
+  public func inset(_ amount: SnapKit.ConstraintInsetTarget) -> SnapKit.ConstraintMakerEditable
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class ConstraintMakerExtendable : SnapKit.ConstraintMakerRelatable {
+  public var left: SnapKit.ConstraintMakerExtendable {
+    get
+  }
+  public var top: SnapKit.ConstraintMakerExtendable {
+    get
+  }
+  public var bottom: SnapKit.ConstraintMakerExtendable {
+    get
+  }
+  public var right: SnapKit.ConstraintMakerExtendable {
+    get
+  }
+  public var leading: SnapKit.ConstraintMakerExtendable {
+    get
+  }
+  public var trailing: SnapKit.ConstraintMakerExtendable {
+    get
+  }
+  public var width: SnapKit.ConstraintMakerExtendable {
+    get
+  }
+  public var height: SnapKit.ConstraintMakerExtendable {
+    get
+  }
+  public var centerX: SnapKit.ConstraintMakerExtendable {
+    get
+  }
+  public var centerY: SnapKit.ConstraintMakerExtendable {
+    get
+  }
+  public var baseline: SnapKit.ConstraintMakerExtendable {
+    get
+  }
+  public var lastBaseline: SnapKit.ConstraintMakerExtendable {
+    get
+  }
+  @available(iOS 8.0, macOS 10.11, *)
+  public var firstBaseline: SnapKit.ConstraintMakerExtendable {
+    get
+  }
+  @available(iOS 8.0, *)
+  public var leftMargin: SnapKit.ConstraintMakerExtendable {
+    get
+  }
+  @available(iOS 8.0, *)
+  public var rightMargin: SnapKit.ConstraintMakerExtendable {
+    get
+  }
+  @available(iOS 8.0, *)
+  public var topMargin: SnapKit.ConstraintMakerExtendable {
+    get
+  }
+  @available(iOS 8.0, *)
+  public var bottomMargin: SnapKit.ConstraintMakerExtendable {
+    get
+  }
+  @available(iOS 8.0, *)
+  public var leadingMargin: SnapKit.ConstraintMakerExtendable {
+    get
+  }
+  @available(iOS 8.0, *)
+  public var trailingMargin: SnapKit.ConstraintMakerExtendable {
+    get
+  }
+  @available(iOS 8.0, *)
+  public var centerXWithinMargins: SnapKit.ConstraintMakerExtendable {
+    get
+  }
+  @available(iOS 8.0, *)
+  public var centerYWithinMargins: SnapKit.ConstraintMakerExtendable {
+    get
+  }
+  public var edges: SnapKit.ConstraintMakerExtendable {
+    get
+  }
+  public var size: SnapKit.ConstraintMakerExtendable {
+    get
+  }
+  @available(iOS 8.0, *)
+  public var margins: SnapKit.ConstraintMakerExtendable {
+    get
+  }
+  @available(iOS 8.0, *)
+  public var centerWithinMargins: SnapKit.ConstraintMakerExtendable {
+    get
+  }
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers public class ConstraintMakerFinalizable {
+  @discardableResult
+  public func labeled(_ label: Swift.String) -> SnapKit.ConstraintMakerFinalizable
+  public var constraint: SnapKit.Constraint {
+    get
+  }
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class ConstraintMakerPriortizable : SnapKit.ConstraintMakerFinalizable {
+  @discardableResult
+  public func priority(_ amount: SnapKit.ConstraintPriority) -> SnapKit.ConstraintMakerFinalizable
+  @discardableResult
+  public func priority(_ amount: SnapKit.ConstraintPriorityTarget) -> SnapKit.ConstraintMakerFinalizable
+  @discardableResult
+  public func priorityRequired() -> SnapKit.ConstraintMakerFinalizable
+  @discardableResult
+  public func priorityHigh() -> SnapKit.ConstraintMakerFinalizable
+  @discardableResult
+  public func priorityMedium() -> SnapKit.ConstraintMakerFinalizable
+  @discardableResult
+  public func priorityLow() -> SnapKit.ConstraintMakerFinalizable
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers public class ConstraintMakerRelatable {
+  @discardableResult
+  public func equalTo(_ other: SnapKit.ConstraintRelatableTarget, _ file: Swift.String = #file, _ line: Swift.UInt = #line) -> SnapKit.ConstraintMakerEditable
+  @discardableResult
+  public func equalToSuperview(_ file: Swift.String = #file, _ line: Swift.UInt = #line) -> SnapKit.ConstraintMakerEditable
+  @discardableResult
+  public func lessThanOrEqualTo(_ other: SnapKit.ConstraintRelatableTarget, _ file: Swift.String = #file, _ line: Swift.UInt = #line) -> SnapKit.ConstraintMakerEditable
+  @discardableResult
+  public func lessThanOrEqualToSuperview(_ file: Swift.String = #file, _ line: Swift.UInt = #line) -> SnapKit.ConstraintMakerEditable
+  @discardableResult
+  public func greaterThanOrEqualTo(_ other: SnapKit.ConstraintRelatableTarget, _ file: Swift.String = #file, line: Swift.UInt = #line) -> SnapKit.ConstraintMakerEditable
+  @discardableResult
+  public func greaterThanOrEqualToSuperview(_ file: Swift.String = #file, line: Swift.UInt = #line) -> SnapKit.ConstraintMakerEditable
+  @objc deinit
+}
+public protocol ConstraintMultiplierTarget {
+  var constraintMultiplierTargetValue: CoreGraphics.CGFloat { get }
+}
+extension Int : SnapKit.ConstraintMultiplierTarget {
+  public var constraintMultiplierTargetValue: CoreGraphics.CGFloat {
+    get
+  }
+}
+extension UInt : SnapKit.ConstraintMultiplierTarget {
+  public var constraintMultiplierTargetValue: CoreGraphics.CGFloat {
+    get
+  }
+}
+extension Float : SnapKit.ConstraintMultiplierTarget {
+  public var constraintMultiplierTargetValue: CoreGraphics.CGFloat {
+    get
+  }
+}
+extension Double : SnapKit.ConstraintMultiplierTarget {
+  public var constraintMultiplierTargetValue: CoreGraphics.CGFloat {
+    get
+  }
+}
+extension CGFloat : SnapKit.ConstraintMultiplierTarget {
+  public var constraintMultiplierTargetValue: CoreGraphics.CGFloat {
+    get
+  }
+}
+public protocol ConstraintOffsetTarget : SnapKit.ConstraintConstantTarget {
+}
+extension Int : SnapKit.ConstraintOffsetTarget {
+}
+extension UInt : SnapKit.ConstraintOffsetTarget {
+}
+extension Float : SnapKit.ConstraintOffsetTarget {
+}
+extension Double : SnapKit.ConstraintOffsetTarget {
+}
+extension CGFloat : SnapKit.ConstraintOffsetTarget {
+}
+public struct ConstraintPriority : Swift.ExpressibleByFloatLiteral, Swift.Equatable, Swift.Strideable {
+  public typealias FloatLiteralType = Swift.Float
+  public let value: Swift.Float
+  public init(floatLiteral value: Swift.Float)
+  public init(_ value: Swift.Float)
+  public static var required: SnapKit.ConstraintPriority {
+    get
+  }
+  public static var high: SnapKit.ConstraintPriority {
+    get
+  }
+  public static var medium: SnapKit.ConstraintPriority {
+    get
+  }
+  public static var low: SnapKit.ConstraintPriority {
+    get
+  }
+  public static func == (lhs: SnapKit.ConstraintPriority, rhs: SnapKit.ConstraintPriority) -> Swift.Bool
+  public func advanced(by n: SnapKit.ConstraintPriority.FloatLiteralType) -> SnapKit.ConstraintPriority
+  public func distance(to other: SnapKit.ConstraintPriority) -> SnapKit.ConstraintPriority.FloatLiteralType
+  public typealias Stride = SnapKit.ConstraintPriority.FloatLiteralType
+}
+public protocol ConstraintPriorityTarget {
+  var constraintPriorityTargetValue: Swift.Float { get }
+}
+extension Int : SnapKit.ConstraintPriorityTarget {
+  public var constraintPriorityTargetValue: Swift.Float {
+    get
+  }
+}
+extension UInt : SnapKit.ConstraintPriorityTarget {
+  public var constraintPriorityTargetValue: Swift.Float {
+    get
+  }
+}
+extension Float : SnapKit.ConstraintPriorityTarget {
+  public var constraintPriorityTargetValue: Swift.Float {
+    get
+  }
+}
+extension Double : SnapKit.ConstraintPriorityTarget {
+  public var constraintPriorityTargetValue: Swift.Float {
+    get
+  }
+}
+extension CGFloat : SnapKit.ConstraintPriorityTarget {
+  public var constraintPriorityTargetValue: Swift.Float {
+    get
+  }
+}
+extension UILayoutPriority : SnapKit.ConstraintPriorityTarget {
+  public var constraintPriorityTargetValue: Swift.Float {
+    get
+  }
+}
+public protocol ConstraintRelatableTarget {
+}
+extension Int : SnapKit.ConstraintRelatableTarget {
+}
+extension UInt : SnapKit.ConstraintRelatableTarget {
+}
+extension Float : SnapKit.ConstraintRelatableTarget {
+}
+extension Double : SnapKit.ConstraintRelatableTarget {
+}
+extension CGFloat : SnapKit.ConstraintRelatableTarget {
+}
+extension CGSize : SnapKit.ConstraintRelatableTarget {
+}
+extension CGPoint : SnapKit.ConstraintRelatableTarget {
+}
+extension UIEdgeInsets : SnapKit.ConstraintRelatableTarget {
+}
+extension ConstraintItem : SnapKit.ConstraintRelatableTarget {
+}
+extension UIView : SnapKit.ConstraintRelatableTarget {
+}
+@available(iOS 9.0, macOS 10.11, *)
+extension UILayoutGuide : SnapKit.ConstraintRelatableTarget {
+}
+extension UIView {
+  public var snp_left: SnapKit.ConstraintItem {
+    get
+  }
+  public var snp_top: SnapKit.ConstraintItem {
+    get
+  }
+  public var snp_right: SnapKit.ConstraintItem {
+    get
+  }
+  public var snp_bottom: SnapKit.ConstraintItem {
+    get
+  }
+  public var snp_leading: SnapKit.ConstraintItem {
+    get
+  }
+  public var snp_trailing: SnapKit.ConstraintItem {
+    get
+  }
+  public var snp_width: SnapKit.ConstraintItem {
+    get
+  }
+  public var snp_height: SnapKit.ConstraintItem {
+    get
+  }
+  public var snp_centerX: SnapKit.ConstraintItem {
+    get
+  }
+  public var snp_centerY: SnapKit.ConstraintItem {
+    get
+  }
+  public var snp_baseline: SnapKit.ConstraintItem {
+    get
+  }
+  @available(iOS 8.0, macOS 10.11, *)
+  public var snp_lastBaseline: SnapKit.ConstraintItem {
+    get
+  }
+  @available(iOS 8.0, macOS 10.11, *)
+  @available(iOS, deprecated: 3.0, message: "Use newer snp.* syntax.")
+  public var snp_firstBaseline: SnapKit.ConstraintItem {
+    get
+  }
+  @available(iOS 8.0, *)
+  @available(iOS, deprecated: 3.0, message: "Use newer snp.* syntax.")
+  public var snp_leftMargin: SnapKit.ConstraintItem {
+    get
+  }
+  @available(iOS 8.0, *)
+  @available(iOS, deprecated: 3.0, message: "Use newer snp.* syntax.")
+  public var snp_topMargin: SnapKit.ConstraintItem {
+    get
+  }
+  @available(iOS 8.0, *)
+  @available(iOS, deprecated: 3.0, message: "Use newer snp.* syntax.")
+  public var snp_rightMargin: SnapKit.ConstraintItem {
+    get
+  }
+  @available(iOS 8.0, *)
+  @available(iOS, deprecated: 3.0, message: "Use newer snp.* syntax.")
+  public var snp_bottomMargin: SnapKit.ConstraintItem {
+    get
+  }
+  @available(iOS 8.0, *)
+  @available(iOS, deprecated: 3.0, message: "Use newer snp.* syntax.")
+  public var snp_leadingMargin: SnapKit.ConstraintItem {
+    get
+  }
+  @available(iOS 8.0, *)
+  @available(iOS, deprecated: 3.0, message: "Use newer snp.* syntax.")
+  public var snp_trailingMargin: SnapKit.ConstraintItem {
+    get
+  }
+  @available(iOS 8.0, *)
+  @available(iOS, deprecated: 3.0, message: "Use newer snp.* syntax.")
+  public var snp_centerXWithinMargins: SnapKit.ConstraintItem {
+    get
+  }
+  @available(iOS 8.0, *)
+  @available(iOS, deprecated: 3.0, message: "Use newer snp.* syntax.")
+  public var snp_centerYWithinMargins: SnapKit.ConstraintItem {
+    get
+  }
+  public var snp_edges: SnapKit.ConstraintItem {
+    get
+  }
+  public var snp_size: SnapKit.ConstraintItem {
+    get
+  }
+  public var snp_center: SnapKit.ConstraintItem {
+    get
+  }
+  @available(iOS 8.0, *)
+  @available(iOS, deprecated: 3.0, message: "Use newer snp.* syntax.")
+  public var snp_margins: SnapKit.ConstraintItem {
+    get
+  }
+  @available(iOS 8.0, *)
+  @available(iOS, deprecated: 3.0, message: "Use newer snp.* syntax.")
+  public var snp_centerWithinMargins: SnapKit.ConstraintItem {
+    get
+  }
+  public func snp_prepareConstraints(_ closure: (SnapKit.ConstraintMaker) -> Swift.Void) -> [SnapKit.Constraint]
+  public func snp_makeConstraints(_ closure: (SnapKit.ConstraintMaker) -> Swift.Void)
+  public func snp_remakeConstraints(_ closure: (SnapKit.ConstraintMaker) -> Swift.Void)
+  public func snp_updateConstraints(_ closure: (SnapKit.ConstraintMaker) -> Swift.Void)
+  public func snp_removeConstraints()
+  public var snp: SnapKit.ConstraintViewDSL {
+    get
+  }
+}
+public typealias ConstraintView = UIKit.UIView
+public struct ConstraintViewDSL : SnapKit.ConstraintAttributesDSL {
+  @discardableResult
+  public func prepareConstraints(_ closure: (SnapKit.ConstraintMaker) -> Swift.Void) -> [SnapKit.Constraint]
+  public func makeConstraints(_ closure: (SnapKit.ConstraintMaker) -> Swift.Void)
+  public func remakeConstraints(_ closure: (SnapKit.ConstraintMaker) -> Swift.Void)
+  public func updateConstraints(_ closure: (SnapKit.ConstraintMaker) -> Swift.Void)
+  public func removeConstraints()
+  public var contentHuggingHorizontalPriority: Swift.Float {
+    get
+    set
+  }
+  public var contentHuggingVerticalPriority: Swift.Float {
+    get
+    set
+  }
+  public var contentCompressionResistanceHorizontalPriority: Swift.Float {
+    get
+    set
+  }
+  public var contentCompressionResistanceVerticalPriority: Swift.Float {
+    get
+    set
+  }
+  public var target: Swift.AnyObject? {
+    get
+  }
+}
+extension LayoutConstraint {
+  @objc override dynamic public var description: Swift.String {
+    @objc get
+  }
+}
+@objc @_inheritsConvenienceInitializers public class LayoutConstraint : UIKit.NSLayoutConstraint {
+  public var label: Swift.String? {
+    get
+    set
+  }
+  @objc override dynamic public init()
+  @objc deinit
+}
+public protocol LayoutConstraintItem : AnyObject {
+}
+@available(iOS 9.0, macOS 10.11, *)
+extension UILayoutGuide : SnapKit.LayoutConstraintItem {
+}
+extension UIView : SnapKit.LayoutConstraintItem {
+}
+@available(iOS 8.0, *)
+extension UILayoutSupport {
+  public var snp: SnapKit.ConstraintLayoutSupportDSL {
+    get
+  }
+}

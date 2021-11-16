@@ -1,0 +1,11 @@
+framework module SwiftyDraw {
+  umbrella header "SwiftyDraw-umbrella.h"
+
+  export *
+  module * { export * }
+}
+
+module SwiftyDraw.Swift {
+    header "SwiftyDraw-Swift.h"
+    requires objc
+}

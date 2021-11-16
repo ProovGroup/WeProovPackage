@@ -1,0 +1,11 @@
+framework module SwiftRichString {
+  umbrella header "SwiftRichString-umbrella.h"
+
+  export *
+  module * { export * }
+}
+
+module SwiftRichString.Swift {
+    header "SwiftRichString-Swift.h"
+    requires objc
+}
