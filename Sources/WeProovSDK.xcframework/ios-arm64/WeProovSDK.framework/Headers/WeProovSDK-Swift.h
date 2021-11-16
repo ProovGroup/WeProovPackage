@@ -222,6 +222,16 @@ SWIFT_PROTOCOL("_TtP10WeProovSDK23CameraInferenceDelegate_")
 - (BOOL)isBlurWithImage:(UIImage * _Nonnull)image SWIFT_WARN_UNUSED_RESULT;
 @end
 
+@class NSCoder;
+
+SWIFT_CLASS("_TtC10WeProovSDK17JTMaterialSpinner")
+@interface JTMaterialSpinner : UIView
+- (nonnull instancetype)initWithFrame:(CGRect)frame OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
+- (void)layoutSubviews;
+@end
+
+
 
 
 typedef SWIFT_ENUM(NSInteger, SignatureLinkAction, open) {
@@ -285,7 +295,6 @@ SWIFT_PROTOCOL("_TtP10WeProovSDK16WPCameraDelegate_")
 @end
 
 @class NSBundle;
-@class NSCoder;
 
 SWIFT_CLASS("_TtC10WeProovSDK4WPVC")
 @interface WPVC : UIViewController

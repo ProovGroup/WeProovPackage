@@ -6,18 +6,18 @@ import Accelerate
 import AudioToolbox.AudioServices
 import AudioToolbox
 import Contacts
+import CoreGraphics
 import CoreVideo
 import FLAnimatedImage
 import Foundation
 import ImageIO
-import JTMaterialSpinner
 import MBProgressHUD
 import MapKit
 import SnapKit
 import Swift
 import SwiftRichString
 import SwiftyDraw
-import Then
+import UIKit.UIGeometry
 import UIKit
 import Vision
 @_exported import WeProovSDK
@@ -75,6 +75,46 @@ public struct WPListItem<T> : Swift.Hashable where T : Swift.Hashable {
   @objc public func locationManager(_: CoreLocation.CLLocationManager, didChangeAuthorization _: CoreLocation.CLAuthorizationStatus)
   @objc public func locationManager(_: CoreLocation.CLLocationManager, didUpdateLocations locations: [CoreLocation.CLLocation])
   @objc deinit
+}
+public protocol Then {
+}
+extension Then {
+  @inlinable public func with(_ block: (inout Self) throws -> Swift.Void) rethrows -> Self {
+    var copy = self
+    try block(&copy)
+    return copy
+  }
+  @inlinable public func `do`(_ block: (Self) throws -> Swift.Void) rethrows {
+    try block(self)
+  }
+}
+extension Then where Self : AnyObject {
+  @inlinable public func then(_ block: (Self) throws -> Swift.Void) rethrows -> Self {
+    try block(self)
+    return self
+  }
+}
+extension NSObject : WeProovSDK.Then {
+}
+extension CGPoint : WeProovSDK.Then {
+}
+extension CGRect : WeProovSDK.Then {
+}
+extension CGSize : WeProovSDK.Then {
+}
+extension CGVector : WeProovSDK.Then {
+}
+extension Array : WeProovSDK.Then {
+}
+extension Dictionary : WeProovSDK.Then {
+}
+extension Set : WeProovSDK.Then {
+}
+extension UIEdgeInsets : WeProovSDK.Then {
+}
+extension UIOffset : WeProovSDK.Then {
+}
+extension UIRectEdge : WeProovSDK.Then {
 }
 @objc @_inheritsConvenienceInitializers open class WPReportView : UIKit.UIView {
   @objc override dynamic public init(frame: CoreGraphics.CGRect)
@@ -198,7 +238,7 @@ extension WPReportViewController : WeProovSDK.WPReportManagerDelegate {
   @objc dynamic public func reportDidClose(manager _: WeProovSDK.WPReportManager, state: WeProovSDK.WPReportCloseState)
 }
 @objc @_inheritsConvenienceInitializers public class WPTableLoaderView : UIKit.UIView {
-  final public let spinnerView: JTMaterialSpinner.JTMaterialSpinner
+  final public let spinnerView: WeProovSDK.JTMaterialSpinner
   @objc override dynamic public init(frame _: CoreGraphics.CGRect)
   @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
   open func beginRefreshing()
@@ -334,6 +374,22 @@ extension WPReportDownloader : Wprv.ReportFullDelegateProtocol {
   @objc override dynamic public init(nibName nibNameOrNil: Swift.String?, bundle nibBundleOrNil: Foundation.Bundle?)
   @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
   @objc override dynamic open func loadView()
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers open class JTMaterialSpinner : UIKit.UIView {
+  final public let circleLayer: QuartzCore.CAShapeLayer
+  open var isAnimating: Swift.Bool {
+    get
+  }
+  open var animationDuration: Swift.Double
+  @objc override dynamic public init(frame: CoreGraphics.CGRect)
+  @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  open func commonInit()
+  @objc override dynamic open func layoutSubviews()
+  open func updateCircleLayer()
+  open func forceBeginRefreshing()
+  open func beginRefreshing()
+  open func endRefreshing()
   @objc deinit
 }
 @_hasMissingDesignatedInitializers @objc public class WPReport : ObjectiveC.NSObject {

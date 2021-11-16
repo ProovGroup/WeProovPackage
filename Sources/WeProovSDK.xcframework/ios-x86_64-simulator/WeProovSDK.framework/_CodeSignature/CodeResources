@@ -6,11 +6,11 @@
 	<dict>
 		<key>Assets.car</key>
 		<data>
-		xp/IiRZhueM5AIHtfdOzPmFSnJ4=
+		h3mhJKgYTJ1niS5tDdiia2l/GS8=
 		</data>
 		<key>Headers/WeProovSDK-Swift.h</key>
 		<data>
-		qNsjc5c8IMWWFF6dzj5PnOIkSvQ=
+		Orb7M5Got4y7y+o015FfGgy7pYA=
 		</data>
 		<key>Headers/WeProovSDK.h</key>
 		<data>
@@ -22,27 +22,27 @@
 		</data>
 		<key>Modules/WeProovSDK.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
 		<data>
-		+RZ7+tXoITtRTHoCX3YP70mGmVw=
+		sOMBkKWWSYjZne0OEFymz+Z2I4A=
 		</data>
 		<key>Modules/WeProovSDK.swiftmodule/x86_64-apple-ios-simulator.swiftinterface</key>
 		<data>
-		n9tdt/5hc59JciZyoyB/wUIUFGo=
+		/FSkvPffPDrDsRBXO4V9520a0MA=
 		</data>
 		<key>Modules/WeProovSDK.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		bOhdWRAvmWcqfEUJxm7sLEpptb0=
+		hrTV+BR6iPm1WEJW0mI71MBuZ/o=
 		</data>
 		<key>Modules/WeProovSDK.swiftmodule/x86_64.swiftdoc</key>
 		<data>
-		+RZ7+tXoITtRTHoCX3YP70mGmVw=
+		sOMBkKWWSYjZne0OEFymz+Z2I4A=
 		</data>
 		<key>Modules/WeProovSDK.swiftmodule/x86_64.swiftinterface</key>
 		<data>
-		n9tdt/5hc59JciZyoyB/wUIUFGo=
+		/FSkvPffPDrDsRBXO4V9520a0MA=
 		</data>
 		<key>Modules/WeProovSDK.swiftmodule/x86_64.swiftmodule</key>
 		<data>
-		bOhdWRAvmWcqfEUJxm7sLEpptb0=
+		hrTV+BR6iPm1WEJW0mI71MBuZ/o=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -185,22 +185,22 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			xp/IiRZhueM5AIHtfdOzPmFSnJ4=
+			h3mhJKgYTJ1niS5tDdiia2l/GS8=
 			</data>
 			<key>hash2</key>
 			<data>
-			21Ze/qHUhwEV6NoSxONrw3PVN/MuWkV8n5eFCxEN3Rw=
+			Moe+OFFMSmtk7C05b46rtf21aIgAsSKFpVxX7WmfXc8=
 			</data>
 		</dict>
 		<key>Headers/WeProovSDK-Swift.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			qNsjc5c8IMWWFF6dzj5PnOIkSvQ=
+			Orb7M5Got4y7y+o015FfGgy7pYA=
 			</data>
 			<key>hash2</key>
 			<data>
-			JsuOc8Cuw5kxY3I8YFaKqJGhoOpptKiBO1/DKglpJFc=
+			otNGFSVuv/FZLvBaDwCNSHZuPbEJNoK3Zn4vSppe8YY=
 			</data>
 		</dict>
 		<key>Headers/WeProovSDK.h</key>
@@ -218,66 +218,66 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			+RZ7+tXoITtRTHoCX3YP70mGmVw=
+			sOMBkKWWSYjZne0OEFymz+Z2I4A=
 			</data>
 			<key>hash2</key>
 			<data>
-			+JzDRRdGTm8cTpO3vgsCm8LAxCVYzkCY57PReJBiAro=
+			BSoetrnUXsHBlknVbd5As7D6BNvv7oh717OPVJh8oM4=
 			</data>
 		</dict>
 		<key>Modules/WeProovSDK.swiftmodule/x86_64-apple-ios-simulator.swiftinterface</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			n9tdt/5hc59JciZyoyB/wUIUFGo=
+			/FSkvPffPDrDsRBXO4V9520a0MA=
 			</data>
 			<key>hash2</key>
 			<data>
-			H++7Zy/ZZ69H/R6oLmey9ZNN3zglvIapbZqBlXwpMtE=
+			CQYgScUCbni6vaNyvSkStW4F4RLxhgZ7PHOKWPso+BY=
 			</data>
 		</dict>
 		<key>Modules/WeProovSDK.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			bOhdWRAvmWcqfEUJxm7sLEpptb0=
+			hrTV+BR6iPm1WEJW0mI71MBuZ/o=
 			</data>
 			<key>hash2</key>
 			<data>
-			sCCo7uHT9GESc9ipMe+ASKKMH+isLpiuOtVSbNa+dwM=
+			FkwBKU+yMjdQoRK4SuEH65UoxCiSs5bwiPdV7owcLJ4=
 			</data>
 		</dict>
 		<key>Modules/WeProovSDK.swiftmodule/x86_64.swiftdoc</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			+RZ7+tXoITtRTHoCX3YP70mGmVw=
+			sOMBkKWWSYjZne0OEFymz+Z2I4A=
 			</data>
 			<key>hash2</key>
 			<data>
-			+JzDRRdGTm8cTpO3vgsCm8LAxCVYzkCY57PReJBiAro=
+			BSoetrnUXsHBlknVbd5As7D6BNvv7oh717OPVJh8oM4=
 			</data>
 		</dict>
 		<key>Modules/WeProovSDK.swiftmodule/x86_64.swiftinterface</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			n9tdt/5hc59JciZyoyB/wUIUFGo=
+			/FSkvPffPDrDsRBXO4V9520a0MA=
 			</data>
 			<key>hash2</key>
 			<data>
-			H++7Zy/ZZ69H/R6oLmey9ZNN3zglvIapbZqBlXwpMtE=
+			CQYgScUCbni6vaNyvSkStW4F4RLxhgZ7PHOKWPso+BY=
 			</data>
 		</dict>
 		<key>Modules/WeProovSDK.swiftmodule/x86_64.swiftmodule</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			bOhdWRAvmWcqfEUJxm7sLEpptb0=
+			hrTV+BR6iPm1WEJW0mI71MBuZ/o=
 			</data>
 			<key>hash2</key>
 			<data>
-			sCCo7uHT9GESc9ipMe+ASKKMH+isLpiuOtVSbNa+dwM=
+			FkwBKU+yMjdQoRK4SuEH65UoxCiSs5bwiPdV7owcLJ4=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
