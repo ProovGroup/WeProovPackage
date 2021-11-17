@@ -12,14 +12,14 @@ Please ensure to use our master branch to ensure you to have the last update.
 
 ### Import
 
-```
+```swift
 import WeProovSDK
 ```
 
 ### Connection 
 
 Pour connecter le SDK avec WeProov avant 1.5.x
-```
+```swift
 // permet de s'avoire si le SDK est connecté
 WPUser.shared.connected
 // permet de se connecter avec un token et un secret
@@ -28,7 +28,7 @@ WPUser.shared.connect(token: "<TOKEN>", secret: "<SECRET>")
 WPUser.shared.lang = "fr"
 ```
 Pour connecter le SDK avec WeProov a partir de 1.5.x
-```
+```swift
 // permet de s'avoire si le SDK est connecté
 WPUser.shared.connected
 //Donne les credentials au sdk
@@ -48,7 +48,7 @@ WeProov utilise les BackgroundURLSession pour upload le rapport en background
 au lancement de l'app appeler: `` WPReportUploader.shared.sync() ``
 gerer l'evenement dans le ``AppDelegate``:
 
-```
+```swift
     func application(_: UIApplication, handleEventsForBackgroundURLSession identifier: String, completionHandler: @escaping () -> Void) {
         if WPReportUploader.shared.handleEventsForBackgroundURLSession(identifier: identifier, completionHandler: completionHandler) {
             return
@@ -62,7 +62,7 @@ gerer l'evenement dans le ``AppDelegate``:
 
 ### AppDelegate
 
-```
+```swift
 
 	func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         ...
@@ -85,7 +85,7 @@ gerer l'evenement dans le ``AppDelegate``:
     }
 ```
 WPUserDelegate
-```
+```swift
     func userDidConnect(user: WPUser){
         print("WeProov Connected")
     }
@@ -99,7 +99,7 @@ WPUserDelegate
 ### Custom View 
 
 Nous allons faire en sorte que lorsque la vue est chargée nous lançons un proovcode contenu dans le viewController
-```
+```swift
 class CustomViewController: UIViewController {
   // Contiens le proovCode à ouvrir 
   var proovCode:String = ""
@@ -148,7 +148,7 @@ class CustomViewController: UIViewController {
 }
 ```
 ### WPReportManagerDelegate
-```
+```swift
 extension CustomViewController: WPReportManagerDelegate {
     // appelé à chaque changement de page
     func reportCurrentSectionDidChange(manager: WPReportManager, section: Int) {
@@ -164,7 +164,7 @@ extension CustomViewController: WPReportManagerDelegate {
 
 ### WPReportDownloadViewControllerDelegate
 
-```
+```swift
 extension CustomViewController: WPReportDownloadViewControllerDelegate {
     func reportCancelDownload() {
         // Cannot stop downloader, so create a new one
@@ -176,7 +176,7 @@ extension CustomViewController: WPReportDownloadViewControllerDelegate {
 ```
 
 ### WPReportDownloaderDelegate
-```
+```swift
 extension CustomViewController: WPReportDownloaderDelegate {
     func reportLoading(downloader _: WPReportDownloader) {}
     
