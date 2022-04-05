@@ -1,5 +1,5 @@
 // swift-interface-format-version: 1.0
-// swift-compiler-version: Apple Swift version 5.4.2 (swiftlang-1205.0.28.2 clang-1205.0.19.57)
+// swift-compiler-version: Apple Swift version 5.6 (swiftlang-5.6.0.323.62 clang-1316.0.20.8)
 // swift-module-flags: -target x86_64-apple-ios10.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name WeProovSDK
 import AVFoundation
 import Accelerate
@@ -23,6 +23,7 @@ import Vision
 @_exported import WeProovSDK
 import WebKit
 import Wprv
+import _Concurrency
 public protocol WPPlateValidatorDelegate : AnyObject {
   func plateValidated(plate: Swift.String, modal: UIKit.UIViewController)
   func retryScan()
@@ -39,25 +40,24 @@ public struct WPListItem<T> : Swift.Hashable where T : Swift.Hashable {
     get
   }
 }
-@_inheritsConvenienceInitializers @objc open class WPTagInfoIAViewController : WeProovSDK.WPVC {
-  @objc override dynamic public init(nibName nibNameOrNil: Swift.String?, bundle nibBundleOrNil: Foundation.Bundle?)
-  @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+@_inheritsConvenienceInitializers @objc @_Concurrency.MainActor(unsafe) open class WPTagInfoIAViewController : WeProovSDK.WPVC {
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(nibName nibNameOrNil: Swift.String?, bundle nibBundleOrNil: Foundation.Bundle?)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
   @objc deinit
-  @objc override dynamic open func loadView()
-  @objc override dynamic open func viewWillDisappear(_ animated: Swift.Bool)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func loadView()
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func viewWillDisappear(_ animated: Swift.Bool)
 }
-@_hasMissingDesignatedInitializers public class WPListVC<T> : WeProovSDK.WPVC, UIKit.UITableViewDelegate, UIKit.UITableViewDataSource where T : Swift.Hashable {
-  convenience public init(singleUsingTheme theme: WeProovSDK.WPTheme, reportColor: UIKit.UIColor, haveSearch: Swift.Bool, title: Swift.String?, list: [WeProovSDK.WPListItem<T>], selectedItem: WeProovSDK.WPListItem<T>? = nil, completion: @escaping (WeProovSDK.WPListItem<T>?) -> Swift.Void)
-  convenience public init(multipleUsingTheme theme: WeProovSDK.WPTheme, reportColor: UIKit.UIColor, haveSelectAll: Swift.Bool, haveSearch: Swift.Bool, title: Swift.String?, list: [WeProovSDK.WPListItem<T>], selectedItems: [WeProovSDK.WPListItem<T>] = [], completion: @escaping ([WeProovSDK.WPListItem<T>]?) -> Swift.Void)
-  @objc override dynamic public func loadView()
-  @objc override dynamic public func viewDidLoad()
-  @objc public func numberOfSections(in _: UIKit.UITableView) -> Swift.Int
-  @objc public func tableView(_: UIKit.UITableView, numberOfRowsInSection section: Swift.Int) -> Swift.Int
-  @objc public func tableView(_ tableView: UIKit.UITableView, heightForRowAt indexPath: Foundation.IndexPath) -> CoreGraphics.CGFloat
-  @objc public func tableView(_ tableView: UIKit.UITableView, cellForRowAt indexPath: Foundation.IndexPath) -> UIKit.UITableViewCell
-  @objc public func tableView(_: UIKit.UITableView, didSelectRowAt indexPath: Foundation.IndexPath)
-  @objc public func tableView(_: UIKit.UITableView, didDeselectRowAt indexPath: Foundation.IndexPath)
-  @objc override dynamic public init(nibName nibNameOrNil: Swift.String?, bundle nibBundleOrNil: Foundation.Bundle?)
+@_hasMissingDesignatedInitializers @_Concurrency.MainActor(unsafe) public class WPListVC<T> : WeProovSDK.WPVC, UIKit.UITableViewDelegate, UIKit.UITableViewDataSource where T : Swift.Hashable {
+  @_Concurrency.MainActor(unsafe) convenience public init(singleUsingTheme theme: WeProovSDK.WPTheme, reportColor: UIKit.UIColor, haveSearch: Swift.Bool, title: Swift.String?, list: [WeProovSDK.WPListItem<T>], selectedItem: WeProovSDK.WPListItem<T>? = nil, completion: @escaping (_ item: WeProovSDK.WPListItem<T>?) -> Swift.Void)
+  @_Concurrency.MainActor(unsafe) convenience public init(multipleUsingTheme theme: WeProovSDK.WPTheme, reportColor: UIKit.UIColor, haveSelectAll: Swift.Bool, haveSearch: Swift.Bool, title: Swift.String?, list: [WeProovSDK.WPListItem<T>], selectedItems: [WeProovSDK.WPListItem<T>] = [], completion: @escaping (_ items: [WeProovSDK.WPListItem<T>]?) -> Swift.Void)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func loadView()
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func viewDidLoad()
+  @_Concurrency.MainActor(unsafe) @objc public func numberOfSections(in _: UIKit.UITableView) -> Swift.Int
+  @_Concurrency.MainActor(unsafe) @objc public func tableView(_: UIKit.UITableView, numberOfRowsInSection section: Swift.Int) -> Swift.Int
+  @_Concurrency.MainActor(unsafe) @objc public func tableView(_ tableView: UIKit.UITableView, heightForRowAt indexPath: Foundation.IndexPath) -> CoreGraphics.CGFloat
+  @_Concurrency.MainActor(unsafe) @objc public func tableView(_ tableView: UIKit.UITableView, cellForRowAt indexPath: Foundation.IndexPath) -> UIKit.UITableViewCell
+  @_Concurrency.MainActor(unsafe) @objc public func tableView(_: UIKit.UITableView, didSelectRowAt indexPath: Foundation.IndexPath)
+  @_Concurrency.MainActor(unsafe) @objc public func tableView(_: UIKit.UITableView, didDeselectRowAt indexPath: Foundation.IndexPath)
   @objc deinit
 }
 @_inheritsConvenienceInitializers @objc public class WPLocationService : ObjectiveC.NSObject, CoreLocation.CLLocationManagerDelegate {
@@ -72,13 +72,13 @@ public struct WPListItem<T> : Swift.Hashable where T : Swift.Hashable {
   @objc public func getStatusLocationManager() -> CoreLocation.CLAuthorizationStatus
   @objc public func stopUpdateLocation()
   @objc public func resetLocation()
-  @objc public func locationManager(_: CoreLocation.CLLocationManager, didChangeAuthorization _: CoreLocation.CLAuthorizationStatus)
+  @objc public func locationManager(_: CoreLocation.CLLocationManager, didChangeAuthorization: CoreLocation.CLAuthorizationStatus)
   @objc public func locationManager(_: CoreLocation.CLLocationManager, didUpdateLocations locations: [CoreLocation.CLLocation])
   @objc deinit
 }
 public protocol Then {
 }
-extension Then {
+extension WeProovSDK.Then {
   @inlinable public func with(_ block: (inout Self) throws -> Swift.Void) rethrows -> Self {
     var copy = self
     try block(&copy)
@@ -88,37 +88,37 @@ extension Then {
     try block(self)
   }
 }
-extension Then where Self : AnyObject {
+extension WeProovSDK.Then where Self : AnyObject {
   @inlinable public func then(_ block: (Self) throws -> Swift.Void) rethrows -> Self {
     try block(self)
     return self
   }
 }
-extension NSObject : WeProovSDK.Then {
+extension ObjectiveC.NSObject : WeProovSDK.Then {
 }
-extension CGPoint : WeProovSDK.Then {
+extension CoreGraphics.CGPoint : WeProovSDK.Then {
 }
-extension CGRect : WeProovSDK.Then {
+extension CoreGraphics.CGRect : WeProovSDK.Then {
 }
-extension CGSize : WeProovSDK.Then {
+extension CoreGraphics.CGSize : WeProovSDK.Then {
 }
-extension CGVector : WeProovSDK.Then {
+extension CoreGraphics.CGVector : WeProovSDK.Then {
 }
-extension Array : WeProovSDK.Then {
+extension Swift.Array : WeProovSDK.Then {
 }
-extension Dictionary : WeProovSDK.Then {
+extension Swift.Dictionary : WeProovSDK.Then {
 }
-extension Set : WeProovSDK.Then {
+extension Swift.Set : WeProovSDK.Then {
 }
-extension UIEdgeInsets : WeProovSDK.Then {
+extension UIKit.UIEdgeInsets : WeProovSDK.Then {
 }
-extension UIOffset : WeProovSDK.Then {
+extension UIKit.UIOffset : WeProovSDK.Then {
 }
-extension UIRectEdge : WeProovSDK.Then {
+extension UIKit.UIRectEdge : WeProovSDK.Then {
 }
-@objc @_inheritsConvenienceInitializers open class WPReportView : UIKit.UIView {
-  @objc override dynamic public init(frame: CoreGraphics.CGRect)
-  @objc required dynamic public init?(coder: Foundation.NSCoder)
+@objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) open class WPReportView : UIKit.UIView {
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreGraphics.CGRect)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder: Foundation.NSCoder)
   @objc deinit
 }
 public struct ImageProcessor {
@@ -138,7 +138,6 @@ public struct ImageProcessor {
 }
 @objc public class WPReportManager : ObjectiveC.NSObject {
   @objc weak public var delegate: WeProovSDK.WPReportManagerDelegate?
-  @objc weak public var inferenceDelegate: WeProovSDK.CameraInferenceDelegate?
   @objc public var report: WeProovSDK.WPReport {
     @objc get
   }
@@ -166,16 +165,15 @@ public struct ImageProcessor {
   @objc public func load(reportView: WeProovSDK.WPReportView)
   @objc public func closeReport()
   @objc public func saveAndCloseReport() -> Swift.Error?
-  @objc override dynamic public init()
 }
-extension WPReportManager : UIKit.UIPageViewControllerDataSource {
-  @objc dynamic public func pageViewController(_: UIKit.UIPageViewController, viewControllerBefore viewController: UIKit.UIViewController) -> UIKit.UIViewController?
-  @objc dynamic public func pageViewController(_: UIKit.UIPageViewController, viewControllerAfter viewController: UIKit.UIViewController) -> UIKit.UIViewController?
+extension WeProovSDK.WPReportManager : UIKit.UIPageViewControllerDataSource {
+  @_Concurrency.MainActor(unsafe) @objc dynamic public func pageViewController(_: UIKit.UIPageViewController, viewControllerBefore viewController: UIKit.UIViewController) -> UIKit.UIViewController?
+  @_Concurrency.MainActor(unsafe) @objc dynamic public func pageViewController(_: UIKit.UIPageViewController, viewControllerAfter viewController: UIKit.UIViewController) -> UIKit.UIViewController?
 }
-extension WPReportManager : UIKit.UIPageViewControllerDelegate {
-  @objc dynamic public func pageViewController(_: UIKit.UIPageViewController, didFinishAnimating finished: Swift.Bool, previousViewControllers _: [UIKit.UIViewController], transitionCompleted completed: Swift.Bool)
+extension WeProovSDK.WPReportManager : UIKit.UIPageViewControllerDelegate {
+  @_Concurrency.MainActor(unsafe) @objc dynamic public func pageViewController(_: UIKit.UIPageViewController, didFinishAnimating finished: Swift.Bool, previousViewControllers _: [UIKit.UIViewController], transitionCompleted completed: Swift.Bool)
 }
-extension WPReportManager : WeProovSDK.WPReportUploaderDelegate, WeProovSDK.WPReportUploadViewControllerDelegate {
+extension WeProovSDK.WPReportManager : WeProovSDK.WPReportUploaderDelegate, WeProovSDK.WPReportUploadViewControllerDelegate {
   @objc dynamic public func reportUploaderUploadAdded(identifier: Swift.String)
   @objc dynamic public func reportUploaderUploadUpdated(identifier: Swift.String, progress: Swift.Float)
   @objc dynamic public func reportUploaderUploadFinished(identifier: Swift.String, withView: Swift.Bool, error: Swift.Bool)
@@ -212,38 +210,36 @@ public struct WPReportOptions {
 @objc public protocol WPReportViewControllerDelegate {
   @objc func reportViewControllerDidDismiss(state: WeProovSDK.WPReportCloseState)
 }
-@objc open class WPReportViewController : WeProovSDK.WPVC {
-  @objc weak public var delegate: WeProovSDK.WPReportViewControllerDelegate?
-  @objc weak public var inferenceDelegate: WeProovSDK.CameraInferenceDelegate?
-  @objc override dynamic open var supportedInterfaceOrientations: UIKit.UIInterfaceOrientationMask {
-    @objc get
+@objc @_Concurrency.MainActor(unsafe) open class WPReportViewController : WeProovSDK.WPVC {
+  @objc @_Concurrency.MainActor(unsafe) weak public var delegate: WeProovSDK.WPReportViewControllerDelegate?
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open var supportedInterfaceOrientations: UIKit.UIInterfaceOrientationMask {
+    @_Concurrency.MainActor(unsafe) @objc get
   }
-  @objc override dynamic open var preferredInterfaceOrientationForPresentation: UIKit.UIInterfaceOrientation {
-    @objc get
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open var preferredInterfaceOrientationForPresentation: UIKit.UIInterfaceOrientation {
+    @_Concurrency.MainActor(unsafe) @objc get
   }
-  @objc override dynamic open var shouldAutorotate: Swift.Bool {
-    @objc get
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open var shouldAutorotate: Swift.Bool {
+    @_Concurrency.MainActor(unsafe) @objc get
   }
-  @objc public init(report: WeProovSDK.WPReport, theme: WeProovSDK.WPTheme? = nil)
-  @objc required dynamic public init?(coder _: Foundation.NSCoder)
-  @objc override dynamic open func loadView()
-  @objc override dynamic open func viewDidLoad()
-  @objc override dynamic open func viewWillAppear(_ animated: Swift.Bool)
-  @objc override dynamic open func viewWillDisappear(_ animated: Swift.Bool)
-  @objc override dynamic public init(nibName nibNameOrNil: Swift.String?, bundle nibBundleOrNil: Foundation.Bundle?)
+  @objc @_Concurrency.MainActor(unsafe) public init(report: WeProovSDK.WPReport, theme: WeProovSDK.WPTheme? = nil)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder _: Foundation.NSCoder)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func loadView()
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func viewDidLoad()
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func viewWillAppear(_ animated: Swift.Bool)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func viewWillDisappear(_ animated: Swift.Bool)
   @objc deinit
 }
-extension WPReportViewController : WeProovSDK.WPReportManagerDelegate {
-  @objc dynamic public func reportCurrentSectionDidChange(manager: WeProovSDK.WPReportManager, section: Swift.Int)
-  @objc dynamic public func reportDidClose(manager _: WeProovSDK.WPReportManager, state: WeProovSDK.WPReportCloseState)
+extension WeProovSDK.WPReportViewController : WeProovSDK.WPReportManagerDelegate {
+  @_Concurrency.MainActor(unsafe) @objc dynamic public func reportCurrentSectionDidChange(manager: WeProovSDK.WPReportManager, section: Swift.Int)
+  @_Concurrency.MainActor(unsafe) @objc dynamic public func reportDidClose(manager _: WeProovSDK.WPReportManager, state: WeProovSDK.WPReportCloseState)
 }
-@objc @_inheritsConvenienceInitializers public class WPTableLoaderView : UIKit.UIView {
-  final public let spinnerView: WeProovSDK.JTMaterialSpinner
-  @objc override dynamic public init(frame _: CoreGraphics.CGRect)
-  @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
-  open func beginRefreshing()
-  @objc override dynamic open func didMoveToSuperview()
-  @objc override dynamic open func layoutSubviews()
+@objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) public class WPTableLoaderView : UIKit.UIView {
+  @_Concurrency.MainActor(unsafe) final public let spinnerView: WeProovSDK.JTMaterialSpinner
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame _: CoreGraphics.CGRect)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  @_Concurrency.MainActor(unsafe) open func beginRefreshing()
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func didMoveToSuperview()
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func layoutSubviews()
   @objc deinit
 }
 @_inheritsConvenienceInitializers @objc public class WPPartOption : ObjectiveC.NSObject {
@@ -300,7 +296,6 @@ extension WPReportViewController : WeProovSDK.WPReportManagerDelegate {
   public init(code: Swift.Int, type: Swift.String, message: Swift.String)
   required public init(err: Foundation.NSError?)
   @objc required dynamic public init?(coder _: Foundation.NSCoder)
-  @objc override dynamic public init(domain: Swift.String, code: Swift.Int, userInfo dict: [Swift.String : Any]? = nil)
   @objc deinit
 }
 @_hasMissingDesignatedInitializers public class WPLoaderView {
@@ -337,59 +332,59 @@ extension WPReportViewController : WeProovSDK.WPReportManagerDelegate {
 @_inheritsConvenienceInitializers @objc public class WPReportDownloader : ObjectiveC.NSObject {
   @objc weak public var delegate: WeProovSDK.WPReportDownloaderDelegate?
   @objc public func load(proovCode: Swift.String)
-  @objc public func load(templateId: Swift.Int)
+  @objc public func load(templateId: Swift.Int, dataToFillTemplate: Swift.String?, item: Wprv.ItemsStruct?)
   @objc public func loadReportInCache()
   @objc public func haveReportInCache() -> Swift.Bool
   @objc override dynamic public init()
   @objc deinit
 }
-extension WPReportDownloader : Wprv.ReportFullDelegateProtocol {
+extension WeProovSDK.WPReportDownloader : Wprv.ReportFullDelegateProtocol {
   @objc dynamic public func onReportFullError(_ error: Swift.Error?)
   @objc dynamic public func onReportFullSuccess(_ report: Wprv.ReportStruct?)
 }
-@_inheritsConvenienceInitializers @objc open class WPReportUploadViewController : WeProovSDK.WPVC {
-  @objc weak public var delegate: WeProovSDK.WPReportUploadViewControllerDelegate?
-  @objc override dynamic public init(nibName nibNameOrNil: Swift.String?, bundle nibBundleOrNil: Foundation.Bundle?)
-  @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+@_inheritsConvenienceInitializers @objc @_Concurrency.MainActor(unsafe) open class WPReportUploadViewController : WeProovSDK.WPVC {
+  @objc @_Concurrency.MainActor(unsafe) weak public var delegate: WeProovSDK.WPReportUploadViewControllerDelegate?
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(nibName nibNameOrNil: Swift.String?, bundle nibBundleOrNil: Foundation.Bundle?)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
   @objc deinit
-  @objc override dynamic open func loadView()
-  @objc override dynamic open func viewWillDisappear(_ animated: Swift.Bool)
-  @objc public func updateProgression(value: Swift.Float)
-  @objc public func showError()
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func loadView()
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func viewWillDisappear(_ animated: Swift.Bool)
+  @objc @_Concurrency.MainActor(unsafe) public func updateProgression(value: Swift.Float)
+  @objc @_Concurrency.MainActor(unsafe) public func showError()
 }
-@_inheritsConvenienceInitializers @objc open class WPInformationIAViewController : WeProovSDK.WPVC {
-  @objc override dynamic public init(nibName nibNameOrNil: Swift.String?, bundle nibBundleOrNil: Foundation.Bundle?)
-  @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+@_inheritsConvenienceInitializers @objc @_Concurrency.MainActor(unsafe) open class WPInformationIAViewController : WeProovSDK.WPVC {
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(nibName nibNameOrNil: Swift.String?, bundle nibBundleOrNil: Foundation.Bundle?)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
   @objc deinit
-  @objc override dynamic open func loadView()
-  @objc override dynamic open func viewWillDisappear(_ animated: Swift.Bool)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func loadView()
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func viewWillDisappear(_ animated: Swift.Bool)
 }
-@objc @_inheritsConvenienceInitializers open class WPVC : UIKit.UIViewController {
-  @objc override dynamic public init(nibName nibNameOrNil: Swift.String?, bundle nibBundleOrNil: Foundation.Bundle?)
-  @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
-  @objc deinit
-}
-@_inheritsConvenienceInitializers @objc open class WPReportSaveViewController : WeProovSDK.WPVC {
-  @objc weak public var delegate: WeProovSDK.WPReportSaveViewControllerDelegate?
-  @objc override dynamic public init(nibName nibNameOrNil: Swift.String?, bundle nibBundleOrNil: Foundation.Bundle?)
-  @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
-  @objc override dynamic open func loadView()
+@objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) open class WPVC : UIKit.UIViewController {
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(nibName nibNameOrNil: Swift.String?, bundle nibBundleOrNil: Foundation.Bundle?)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
   @objc deinit
 }
-@objc @_inheritsConvenienceInitializers open class JTMaterialSpinner : UIKit.UIView {
-  final public let circleLayer: QuartzCore.CAShapeLayer
-  open var isAnimating: Swift.Bool {
+@_inheritsConvenienceInitializers @objc @_Concurrency.MainActor(unsafe) open class WPReportSaveViewController : WeProovSDK.WPVC {
+  @objc @_Concurrency.MainActor(unsafe) weak public var delegate: WeProovSDK.WPReportSaveViewControllerDelegate?
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(nibName nibNameOrNil: Swift.String?, bundle nibBundleOrNil: Foundation.Bundle?)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func loadView()
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) open class JTMaterialSpinner : UIKit.UIView {
+  @_Concurrency.MainActor(unsafe) final public let circleLayer: QuartzCore.CAShapeLayer
+  @_Concurrency.MainActor(unsafe) open var isAnimating: Swift.Bool {
     get
   }
-  open var animationDuration: Swift.Double
-  @objc override dynamic public init(frame: CoreGraphics.CGRect)
-  @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
-  open func commonInit()
-  @objc override dynamic open func layoutSubviews()
-  open func updateCircleLayer()
-  open func forceBeginRefreshing()
-  open func beginRefreshing()
-  open func endRefreshing()
+  @_Concurrency.MainActor(unsafe) open var animationDuration: Swift.Double
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreGraphics.CGRect)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  @_Concurrency.MainActor(unsafe) open func commonInit()
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func layoutSubviews()
+  @_Concurrency.MainActor(unsafe) open func updateCircleLayer()
+  @_Concurrency.MainActor(unsafe) open func forceBeginRefreshing()
+  @_Concurrency.MainActor(unsafe) open func beginRefreshing()
+  @_Concurrency.MainActor(unsafe) open func endRefreshing()
   @objc deinit
 }
 @_hasMissingDesignatedInitializers @objc public class WPReport : ObjectiveC.NSObject {
@@ -401,6 +396,7 @@ extension WPReportDownloader : Wprv.ReportFullDelegateProtocol {
       get
     }
   }
+  final public let wpReport: Wprv.ReportStruct
   @objc public var haveDropoff: Swift.Bool {
     @objc get
   }
@@ -415,7 +411,6 @@ extension WPReportDownloader : Wprv.ReportFullDelegateProtocol {
   }
   @objc public func state() -> WeProovSDK.WPReport.ReportState
   public func importItem(item: Wprv.ItemsStruct, pictures: Swift.Bool)
-  @objc override dynamic public init()
   @objc deinit
 }
 @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @objc public class WPUser : ObjectiveC.NSObject, Wprv.UserDelegateProtocol {
@@ -597,7 +592,7 @@ extension WPReportDownloader : Wprv.ReportFullDelegateProtocol {
   @objc override dynamic public init()
   @objc deinit
 }
-extension NSNotification.Name {
+extension Foundation.NSNotification.Name {
   public static let currentSectionDidChange: Foundation.Notification.Name
   public static let sectionErrorsDidChange: Foundation.Notification.Name
   public static let localeDidChange: Foundation.Notification.Name
@@ -606,33 +601,32 @@ extension NSNotification.Name {
   @objc func isACar(cgimage: CoreGraphics.CGImage) -> Swift.Bool
   @objc func isBlur(image: UIKit.UIImage) -> Swift.Bool
 }
-@_inheritsConvenienceInitializers @objc open class WPReportDownloadViewController : WeProovSDK.WPVC {
-  @objc weak public var delegate: WeProovSDK.WPReportDownloadViewControllerDelegate?
-  @objc override dynamic public init(nibName nibNameOrNil: Swift.String?, bundle nibBundleOrNil: Foundation.Bundle?)
-  @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+@_inheritsConvenienceInitializers @objc @_Concurrency.MainActor(unsafe) open class WPReportDownloadViewController : WeProovSDK.WPVC {
+  @objc @_Concurrency.MainActor(unsafe) weak public var delegate: WeProovSDK.WPReportDownloadViewControllerDelegate?
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(nibName nibNameOrNil: Swift.String?, bundle nibBundleOrNil: Foundation.Bundle?)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
   @objc deinit
-  @objc override dynamic open func loadView()
-  @objc override dynamic open func viewWillDisappear(_ animated: Swift.Bool)
-  @objc public func updateProgression(value: Swift.Float)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func loadView()
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func viewWillDisappear(_ animated: Swift.Bool)
+  @objc @_Concurrency.MainActor(unsafe) public func updateProgression(value: Swift.Float)
 }
-@_hasMissingDesignatedInitializers public class WPMatrixVC<T> : WeProovSDK.WPVC, UIKit.UITableViewDelegate, UIKit.UITableViewDataSource where T : Swift.Hashable {
-  convenience public init(singleUsingTheme theme: WeProovSDK.WPTheme, reportColor: UIKit.UIColor, haveSearch: Swift.Bool, wpProcessField: Wprv.ReportProcess, selectedItem: Swift.String? = nil, indexAnnotationToEdit: Swift.Int = -1, completion: @escaping (Swift.String?, Swift.Int?) -> Swift.Void)
-  @objc override dynamic public func loadView()
-  @objc override dynamic public func viewDidLoad()
-  @objc public func numberOfSections(in _: UIKit.UITableView) -> Swift.Int
-  @objc public func tableView(_: UIKit.UITableView, numberOfRowsInSection section: Swift.Int) -> Swift.Int
-  @objc public func tableView(_ tableView: UIKit.UITableView, heightForRowAt indexPath: Foundation.IndexPath) -> CoreGraphics.CGFloat
-  @objc public func tableView(_ tableView: UIKit.UITableView, cellForRowAt indexPath: Foundation.IndexPath) -> UIKit.UITableViewCell
-  @objc public func tableView(_: UIKit.UITableView, didSelectRowAt indexPath: Foundation.IndexPath)
-  @objc public func tableView(_: UIKit.UITableView, didDeselectRowAt indexPath: Foundation.IndexPath)
-  @objc override dynamic public init(nibName nibNameOrNil: Swift.String?, bundle nibBundleOrNil: Foundation.Bundle?)
+@_hasMissingDesignatedInitializers @_Concurrency.MainActor(unsafe) public class WPMatrixVC<T> : WeProovSDK.WPVC, UIKit.UITableViewDelegate, UIKit.UITableViewDataSource where T : Swift.Hashable {
+  @_Concurrency.MainActor(unsafe) convenience public init(singleUsingTheme theme: WeProovSDK.WPTheme, reportColor: UIKit.UIColor, haveSearch: Swift.Bool, wpProcessField: Wprv.ReportProcess, selectedItem: Swift.String? = nil, indexAnnotationToEdit: Swift.Int = -1, completion: @escaping (_ item: Swift.String?, _ price: Swift.Int?) -> Swift.Void)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func loadView()
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func viewDidLoad()
+  @_Concurrency.MainActor(unsafe) @objc public func numberOfSections(in _: UIKit.UITableView) -> Swift.Int
+  @_Concurrency.MainActor(unsafe) @objc public func tableView(_: UIKit.UITableView, numberOfRowsInSection section: Swift.Int) -> Swift.Int
+  @_Concurrency.MainActor(unsafe) @objc public func tableView(_ tableView: UIKit.UITableView, heightForRowAt indexPath: Foundation.IndexPath) -> CoreGraphics.CGFloat
+  @_Concurrency.MainActor(unsafe) @objc public func tableView(_ tableView: UIKit.UITableView, cellForRowAt indexPath: Foundation.IndexPath) -> UIKit.UITableViewCell
+  @_Concurrency.MainActor(unsafe) @objc public func tableView(_: UIKit.UITableView, didSelectRowAt indexPath: Foundation.IndexPath)
+  @_Concurrency.MainActor(unsafe) @objc public func tableView(_: UIKit.UITableView, didDeselectRowAt indexPath: Foundation.IndexPath)
   @objc deinit
 }
-extension CVBuffer {
+extension CoreVideo.CVBuffer {
   public func centerThumbnail(ofSize size: CoreGraphics.CGSize) -> CoreVideo.CVPixelBuffer?
   public static func buffer(from image: UIKit.UIImage) -> CoreVideo.CVPixelBuffer?
 }
-extension UIImage {
+extension UIKit.UIImage {
   public func rotated(by degrees: CoreGraphics.CGFloat) -> UIKit.UIImage
 }
 @objc public protocol WPReportSaverDelegate {
@@ -684,15 +678,15 @@ extension UIImage {
   open func focus(point: CoreGraphics.CGPoint)
   @objc deinit
 }
-extension WPCamera : AVFoundation.AVCaptureMetadataOutputObjectsDelegate {
+extension WeProovSDK.WPCamera : AVFoundation.AVCaptureMetadataOutputObjectsDelegate {
   @objc dynamic public func metadataOutput(_: AVFoundation.AVCaptureMetadataOutput, didOutput metadataObjects: [AVFoundation.AVMetadataObject], from _: AVFoundation.AVCaptureConnection)
 }
-extension WPCamera : AVFoundation.AVCapturePhotoCaptureDelegate {
+extension WeProovSDK.WPCamera : AVFoundation.AVCapturePhotoCaptureDelegate {
   @available(iOS 11.0, *)
   @objc dynamic public func photoOutput(_: AVFoundation.AVCapturePhotoOutput, didFinishProcessingPhoto photo: AVFoundation.AVCapturePhoto, error: Swift.Error?)
   @objc dynamic public func photoOutput(_: AVFoundation.AVCapturePhotoOutput, didFinishProcessingPhoto photoSampleBuffer: CoreMedia.CMSampleBuffer?, previewPhoto previewSampleBuffer: CoreMedia.CMSampleBuffer?, resolvedSettings _: AVFoundation.AVCaptureResolvedPhotoSettings, bracketSettings _: AVFoundation.AVCaptureBracketedStillImageSettings?, error: Swift.Error?)
 }
-extension WPCamera : AVFoundation.AVCaptureVideoDataOutputSampleBufferDelegate {
+extension WeProovSDK.WPCamera : AVFoundation.AVCaptureVideoDataOutputSampleBufferDelegate {
   @objc dynamic public func captureOutput(_: AVFoundation.AVCaptureOutput, didOutput sampleBuffer: CoreMedia.CMSampleBuffer, from _: AVFoundation.AVCaptureConnection)
 }
 extension WeProovSDK.WPReportCloseState : Swift.Equatable {}

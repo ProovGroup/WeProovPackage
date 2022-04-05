@@ -1,5 +1,5 @@
 // swift-interface-format-version: 1.0
-// swift-compiler-version: Apple Swift version 5.4.2 (swiftlang-1205.0.28.2 clang-1205.0.19.57)
+// swift-compiler-version: Apple Swift version 5.6 (swiftlang-5.6.0.323.62 clang-1316.0.20.8)
 // swift-module-flags: -target x86_64-apple-ios10.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name SwiftRichString
 import CoreGraphics
 import CoreText
@@ -9,6 +9,7 @@ import ObjectiveC
 import Swift
 @_exported import SwiftRichString
 import UIKit
+import _Concurrency
 import ObjectiveC.runtime
 @objc public protocol AsyncTextAttachmentDelegate {
   @objc func textAttachmentDidLoadImage(textAttachment: SwiftRichString.AsyncTextAttachment, displaySizeChanged: Swift.Bool)
@@ -26,20 +27,18 @@ import ObjectiveC.runtime
   }
   @objc override dynamic public func image(forBounds imageBounds: CoreGraphics.CGRect, textContainer: UIKit.NSTextContainer?, characterIndex charIndex: Swift.Int) -> UIKit.UIImage?
   @objc override dynamic public func attachmentBounds(for textContainer: UIKit.NSTextContainer?, proposedLineFragment lineFrag: CoreGraphics.CGRect, glyphPosition position: CoreGraphics.CGPoint, characterIndex charIndex: Swift.Int) -> CoreGraphics.CGRect
-  @available(iOS 7.0, *)
-  @objc override dynamic public init(data contentData: Foundation.Data?, ofType uti: Swift.String?)
   @objc deinit
 }
-extension NSLayoutManager {
+extension UIKit.NSLayoutManager {
   public func setNeedsLayout(forAttachment attachment: UIKit.NSTextAttachment)
   public func setNeedsDisplay(forAttachment attachment: UIKit.NSTextAttachment)
 }
-extension NSMutableAttributedString {
+extension Foundation.NSMutableAttributedString {
   convenience public init?(imageURL: Swift.String?, bounds: Swift.String? = nil)
   convenience public init?(imageNamed: Swift.String?, bounds: Swift.String? = nil)
   convenience public init?(image: SwiftRichString.Image?, bounds: Swift.String? = nil)
 }
-extension NSMutableAttributedString {
+extension Foundation.NSMutableAttributedString {
   @discardableResult
   public func add(style: Swift.String, range: Foundation.NSRange? = nil) -> SwiftRichString.AttributedString
   @discardableResult
@@ -67,20 +66,20 @@ public func + (lhs: SwiftRichString.AttributedString, rhs: Swift.String) -> Swif
   public static func buildBlock(_ components: SwiftRichString.AttributedString...) -> SwiftRichString.AttributedString
   @objc deinit
 }
-extension NSMutableAttributedString {
+extension Foundation.NSMutableAttributedString {
   public class func composing(@SwiftRichString.AttributedStringBuilder _ parts: () -> SwiftRichString.AttributedString) -> SwiftRichString.AttributedString
 }
 public protocol ColorConvertible {
   var color: SwiftRichString.Color { get }
 }
-extension UIColor : SwiftRichString.ColorConvertible {
+extension UIKit.UIColor : SwiftRichString.ColorConvertible {
   public var color: SwiftRichString.Color {
     get
   }
   convenience public init(hexString: Swift.String)
   convenience public init(hex: Swift.UInt32, useAlpha alphaChannel: Swift.Bool = false)
 }
-extension String : SwiftRichString.ColorConvertible {
+extension Swift.String : SwiftRichString.ColorConvertible {
   public var color: SwiftRichString.Color {
     get
   }
@@ -134,10 +133,6 @@ public struct TraitVariant : Swift.OptionSet {
   public typealias Element = SwiftRichString.TraitVariant
   public typealias RawValue = Swift.Int
 }
-extension UIFontDescriptor.SymbolicTraits {
-}
-extension NSAttributedString.Key {
-}
 public class DynamicText {
   public var style: UIKit.UIFont.TextStyle?
   public var traitCollection: UIKit.UITraitCollection?
@@ -146,19 +141,19 @@ public class DynamicText {
   public init(_ handler: SwiftRichString.DynamicText.InitHandler? = nil)
   @objc deinit
 }
-extension String {
+extension Swift.String {
   public func escapeWithUnicodeEntities() -> Swift.String
 }
-extension Array where Element == SwiftRichString.StyleProtocol {
+extension Swift.Array where Element == SwiftRichString.StyleProtocol {
   public func mergeStyle() -> SwiftRichString.Style
 }
 public protocol FontConvertible {
   func font(size: CoreGraphics.CGFloat?) -> SwiftRichString.Font
 }
-extension UIFont : SwiftRichString.FontConvertible {
+extension UIKit.UIFont : SwiftRichString.FontConvertible {
   public func font(size: CoreGraphics.CGFloat?) -> SwiftRichString.Font
 }
-extension String : SwiftRichString.FontConvertible {
+extension Swift.String : SwiftRichString.FontConvertible {
   public func font(size: CoreGraphics.CGFloat?) -> SwiftRichString.Font
 }
 public struct FontData {
@@ -171,7 +166,7 @@ public struct FontData {
 public protocol FontInfoAttribute {
   func featureSettings() -> [(type: Swift.Int, selector: Swift.Int)]
 }
-extension FontInfoAttribute {
+extension SwiftRichString.FontInfoAttribute {
   public func attributes() -> [[SwiftRichString.FontDescriptor.FeatureKey : Any]]
 }
 public enum NumberCase : SwiftRichString.FontInfoAttribute {
@@ -219,7 +214,7 @@ public enum SmallCaps : SwiftRichString.FontInfoAttribute {
 public struct StylisticAlternates {
   public init()
 }
-extension StylisticAlternates {
+extension SwiftRichString.StylisticAlternates {
   public static func one(on isOn: Swift.Bool) -> SwiftRichString.StylisticAlternates
   public static func two(on isOn: Swift.Bool) -> SwiftRichString.StylisticAlternates
   public static func three(on isOn: Swift.Bool) -> SwiftRichString.StylisticAlternates
@@ -241,27 +236,27 @@ extension StylisticAlternates {
   public static func nineteen(on isOn: Swift.Bool) -> SwiftRichString.StylisticAlternates
   public static func twenty(on isOn: Swift.Bool) -> SwiftRichString.StylisticAlternates
 }
-extension StylisticAlternates {
+extension SwiftRichString.StylisticAlternates {
   public mutating func add(other theOther: SwiftRichString.StylisticAlternates)
   public func byAdding(other theOther: SwiftRichString.StylisticAlternates) -> SwiftRichString.StylisticAlternates
 }
-extension StylisticAlternates : SwiftRichString.FontInfoAttribute {
+extension SwiftRichString.StylisticAlternates : SwiftRichString.FontInfoAttribute {
   public func featureSettings() -> [(type: Swift.Int, selector: Swift.Int)]
 }
 public func + (lhs: SwiftRichString.StylisticAlternates, rhs: SwiftRichString.StylisticAlternates) -> SwiftRichString.StylisticAlternates
 public struct ContextualAlternates {
   public init()
 }
-extension ContextualAlternates {
+extension SwiftRichString.ContextualAlternates {
   public static func contextualAlternates(on isOn: Swift.Bool) -> SwiftRichString.ContextualAlternates
   public static func swashAlternates(on isOn: Swift.Bool) -> SwiftRichString.ContextualAlternates
   public static func contextualSwashAlternates(on isOn: Swift.Bool) -> SwiftRichString.ContextualAlternates
 }
-extension ContextualAlternates {
+extension SwiftRichString.ContextualAlternates {
   public mutating func add(other theOther: SwiftRichString.ContextualAlternates)
   public func byAdding(other theOther: SwiftRichString.ContextualAlternates) -> SwiftRichString.ContextualAlternates
 }
-extension ContextualAlternates : SwiftRichString.FontInfoAttribute {
+extension SwiftRichString.ContextualAlternates : SwiftRichString.FontInfoAttribute {
   public func featureSettings() -> [(type: Swift.Int, selector: Swift.Int)]
 }
 public func + (lhs: SwiftRichString.ContextualAlternates, rhs: SwiftRichString.ContextualAlternates) -> SwiftRichString.ContextualAlternates
@@ -275,32 +270,32 @@ public struct OrderedDictionary<K, V> where K : Swift.Hashable {
   }
   public mutating func remove(key: K) -> V?
 }
-extension OrderedDictionary : Swift.Sequence {
+extension SwiftRichString.OrderedDictionary : Swift.Sequence {
   public func makeIterator() -> Swift.AnyIterator<V>
   public typealias Element = V
   public typealias Iterator = Swift.AnyIterator<V>
 }
-extension OrderedDictionary : Swift.CustomStringConvertible {
+extension SwiftRichString.OrderedDictionary : Swift.CustomStringConvertible {
   public var description: Swift.String {
     get
   }
 }
-extension OrderedDictionary : Swift.ExpressibleByDictionaryLiteral {
+extension SwiftRichString.OrderedDictionary : Swift.ExpressibleByDictionaryLiteral {
   public init(dictionaryLiteral elements: (K, V)...)
   public typealias Key = K
   public typealias Value = V
 }
-extension String {
+extension Swift.String {
   public func set(style: Swift.String, range: Foundation.NSRange? = nil) -> SwiftRichString.AttributedString?
   public func set(styles: [Swift.String], range: Foundation.NSRange? = nil) -> SwiftRichString.AttributedString?
   public func set(style: SwiftRichString.StyleProtocol, range: Foundation.NSRange? = nil) -> SwiftRichString.AttributedString
   public func set(styles: [SwiftRichString.StyleProtocol], range: Foundation.NSRange? = nil) -> SwiftRichString.AttributedString
 }
 public func + (lhs: Swift.String, rhs: SwiftRichString.StyleProtocol) -> SwiftRichString.AttributedString
-extension _NSRange {
+extension Foundation._NSRange {
   public func `in`(_ str: Swift.String) -> Swift.Range<Swift.String.Index>?
 }
-extension String {
+extension Swift.String {
   public func rangeFrom(nsRange: Foundation.NSRange) -> Swift.Range<Swift.String.Index>?
   public func substring(from: Swift.Int?, length: Swift.Int) -> Swift.String?
   public subscript(index: Swift.Int) -> Swift.Character? {
@@ -324,7 +319,7 @@ extension String {
   public func removing(prefix: Swift.String) -> Swift.String
   public func removing(suffix: Swift.String) -> Swift.String
 }
-extension Substring {
+extension Swift.Substring {
   public var string: Swift.String {
     get
   }
@@ -534,7 +529,7 @@ public class StyleXML : SwiftRichString.StyleProtocol {
   }
   public var baseStyle: SwiftRichString.StyleProtocol?
   public var xmlParsingOptions: SwiftRichString.XMLParsingOptions
-  public var imageProvider: ((Swift.String, [Swift.String : Swift.String]?) -> SwiftRichString.Image?)?
+  public var imageProvider: ((_ name: Swift.String, _ attributes: [Swift.String : Swift.String]?) -> SwiftRichString.Image?)?
   public var xmlAttributesResolver: SwiftRichString.XMLDynamicAttributesResolver
   public init(base: SwiftRichString.StyleProtocol? = nil, _ styles: [Swift.String : SwiftRichString.StyleProtocol] = [:])
   public func add(style: SwiftRichString.Style, as name: Swift.String)
@@ -558,7 +553,7 @@ public protocol StyleProtocol : AnyObject {
   @discardableResult
   func remove(from source: SwiftRichString.AttributedString, range: Foundation.NSRange?) -> SwiftRichString.AttributedString
 }
-extension StyleProtocol {
+extension SwiftRichString.StyleProtocol {
   public func set(to source: Swift.String, range: Foundation.NSRange?) -> SwiftRichString.AttributedString
   public func add(to source: SwiftRichString.AttributedString, range: Foundation.NSRange?) -> SwiftRichString.AttributedString
   @discardableResult
@@ -883,44 +878,44 @@ public enum TextTransform {
   case capitalizedWithLocale(Foundation.Locale)
   case custom(SwiftRichString.TextTransform.TransformFunction)
 }
-extension UILabel {
-  @objc @IBInspectable dynamic public var styleName: Swift.String? {
+extension UIKit.UILabel {
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) dynamic public var styleName: Swift.String? {
     @objc get
     @objc set
   }
-  public var style: SwiftRichString.StyleProtocol? {
+  @_Concurrency.MainActor(unsafe) public var style: SwiftRichString.StyleProtocol? {
     get
     set
   }
-  public var styledText: Swift.String? {
+  @_Concurrency.MainActor(unsafe) public var styledText: Swift.String? {
     get
     set
   }
 }
-extension UITextField {
-  @objc @IBInspectable dynamic public var styleName: Swift.String? {
+extension UIKit.UITextField {
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) dynamic public var styleName: Swift.String? {
     @objc get
     @objc set
   }
-  public var style: SwiftRichString.StyleProtocol? {
+  @_Concurrency.MainActor(unsafe) public var style: SwiftRichString.StyleProtocol? {
     get
     set
   }
-  public var styledText: Swift.String? {
+  @_Concurrency.MainActor(unsafe) public var styledText: Swift.String? {
     get
     set
   }
 }
-extension UITextView {
-  @objc @IBInspectable dynamic public var styleName: Swift.String? {
+extension UIKit.UITextView {
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) dynamic public var styleName: Swift.String? {
     @objc get
     @objc set
   }
-  public var style: SwiftRichString.StyleProtocol? {
+  @_Concurrency.MainActor(unsafe) public var style: SwiftRichString.StyleProtocol? {
     get
     set
   }
-  public var styledText: Swift.String? {
+  @_Concurrency.MainActor(unsafe) public var styledText: Swift.String? {
     get
     set
   }
@@ -928,7 +923,7 @@ extension UITextView {
 public protocol URLRepresentable {
   var url: Foundation.URL { get }
 }
-extension URL : SwiftRichString.URLRepresentable {
+extension Foundation.URL : SwiftRichString.URLRepresentable {
   public var url: Foundation.URL {
     get
   }
@@ -939,7 +934,7 @@ public protocol XMLDynamicAttributesResolver {
   func applyDynamicAttributes(to attributedString: inout SwiftRichString.AttributedString, xmlStyle: SwiftRichString.XMLDynamicStyle, fromStyle: SwiftRichString.StyleXML)
   func styleForUnknownXMLTag(_ tag: Swift.String, to attributedString: inout SwiftRichString.AttributedString, attributes: [Swift.String : Swift.String]?, fromStyle: SwiftRichString.StyleXML)
 }
-extension XMLDynamicAttributesResolver {
+extension SwiftRichString.XMLDynamicAttributesResolver {
   public func image(name: Swift.String, attributes: [Swift.String : Swift.String]?, fromStyle style: SwiftRichString.StyleXML) -> SwiftRichString.Image?
 }
 open class StandardXMLAttributesResolver : SwiftRichString.XMLDynamicAttributesResolver {
@@ -971,14 +966,13 @@ public struct XMLParsingOptions : Swift.OptionSet {
   @objc public func parser(_ parser: Foundation.XMLParser, didStartElement elementName: Swift.String, namespaceURI: Swift.String?, qualifiedName qName: Swift.String?, attributes attributeDict: [Swift.String : Swift.String])
   @objc public func parser(_ parser: Foundation.XMLParser, didEndElement elementName: Swift.String, namespaceURI: Swift.String?, qualifiedName qName: Swift.String?)
   @objc public func parser(_ parser: Foundation.XMLParser, foundCharacters string: Swift.String)
-  @objc override dynamic public init()
   @objc deinit
 }
 @_hasMissingDesignatedInitializers public class XMLDynamicStyle {
   final public let tag: Swift.String
   final public let style: SwiftRichString.StyleProtocol?
   final public let xmlAttributes: [Swift.String : Swift.String]?
-  public func enumerateAttributes(_ handler: ((Swift.String, Swift.String) -> Swift.Void))
+  public func enumerateAttributes(_ handler: ((_ key: Swift.String, _ value: Swift.String) -> Swift.Void))
   @objc deinit
 }
 extension SwiftRichString.Ligatures : Swift.Equatable {}

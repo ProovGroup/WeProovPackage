@@ -1,9 +1,10 @@
 // swift-interface-format-version: 1.0
-// swift-compiler-version: Apple Swift version 5.4.2 (swiftlang-1205.0.28.2 clang-1205.0.19.57)
+// swift-compiler-version: Apple Swift version 5.6 (swiftlang-5.6.0.323.62 clang-1316.0.20.8)
 // swift-module-flags: -target arm64-apple-ios10.0 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name SwiftyDraw
 import Swift
 @_exported import SwiftyDraw
 import UIKit
+import _Concurrency
 public class Brush : Swift.Codable {
   public var color: SwiftyDraw.Color
   public var originalWidth: CoreGraphics.CGFloat {
@@ -40,7 +41,7 @@ public class Brush : Swift.Codable {
   public func encode(to encoder: Swift.Encoder) throws
   required public init(from decoder: Swift.Decoder) throws
 }
-extension Brush : Swift.Equatable, Swift.Comparable, Swift.CustomStringConvertible {
+extension SwiftyDraw.Brush : Swift.Equatable, Swift.Comparable, Swift.CustomStringConvertible {
   public static func == (lhs: SwiftyDraw.Brush, rhs: SwiftyDraw.Brush) -> Swift.Bool
   public static func < (lhs: SwiftyDraw.Brush, rhs: SwiftyDraw.Brush) -> Swift.Bool
   public var description: Swift.String {
@@ -71,12 +72,12 @@ public enum BlendMode : Swift.String, Swift.Codable {
   @objc func swiftyDraw(didFinishDrawingIn drawingView: SwiftyDraw.SwiftyDrawView, using touch: UIKit.UITouch)
   @objc func swiftyDraw(didCancelDrawingIn drawingView: SwiftyDraw.SwiftyDrawView, using touch: UIKit.UITouch)
 }
-@objc @_inheritsConvenienceInitializers open class SwiftyDrawView : UIKit.UIView {
-  public var brush: SwiftyDraw.Brush {
+@objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) open class SwiftyDrawView : UIKit.UIView {
+  @_Concurrency.MainActor(unsafe) public var brush: SwiftyDraw.Brush {
     get
     set
   }
-  public var isEnabled: Swift.Bool
+  @_Concurrency.MainActor(unsafe) public var isEnabled: Swift.Bool
   public enum DrawMode {
     case draw, line, ellipse, rect
     public static func == (a: SwiftyDraw.SwiftyDrawView.DrawMode, b: SwiftyDraw.SwiftyDrawView.DrawMode) -> Swift.Bool
@@ -85,13 +86,13 @@ public enum BlendMode : Swift.String, Swift.Codable {
       get
     }
   }
-  public var drawMode: SwiftyDraw.SwiftyDrawView.DrawMode
-  public var shouldFillPath: Swift.Bool
-  public var isPencilInteractive: Swift.Bool {
+  @_Concurrency.MainActor(unsafe) public var drawMode: SwiftyDraw.SwiftyDrawView.DrawMode
+  @_Concurrency.MainActor(unsafe) public var shouldFillPath: Swift.Bool
+  @_Concurrency.MainActor(unsafe) public var isPencilInteractive: Swift.Bool {
     get
     set
   }
-  @objc @IBOutlet weak public var delegate: SwiftyDraw.SwiftyDrawViewDelegate?
+  @objc @IBOutlet @_Concurrency.MainActor(unsafe) weak public var delegate: SwiftyDraw.SwiftyDrawViewDelegate?
   @available(iOS 9.1, *)
   public enum TouchType : Swift.Equatable, Swift.CaseIterable {
     case finger, pencil
@@ -106,14 +107,14 @@ public enum BlendMode : Swift.String, Swift.Codable {
     }
   }
   @available(iOS 9.1, *)
-  public var allowedTouchTypes: [SwiftyDraw.SwiftyDrawView.TouchType] {
+  @_Concurrency.MainActor(unsafe) public var allowedTouchTypes: [SwiftyDraw.SwiftyDrawView.TouchType] {
     get
     set
   }
-  public var drawItems: [SwiftyDraw.SwiftyDrawView.DrawItem]
-  public var drawingHistory: [SwiftyDraw.SwiftyDrawView.DrawItem]
-  public var firstPoint: CoreGraphics.CGPoint
-  public var currentPoint: CoreGraphics.CGPoint
+  @_Concurrency.MainActor(unsafe) public var drawItems: [SwiftyDraw.SwiftyDrawView.DrawItem]
+  @_Concurrency.MainActor(unsafe) public var drawingHistory: [SwiftyDraw.SwiftyDrawView.DrawItem]
+  @_Concurrency.MainActor(unsafe) public var firstPoint: CoreGraphics.CGPoint
+  @_Concurrency.MainActor(unsafe) public var currentPoint: CoreGraphics.CGPoint
   public enum ShapeType {
     case rectangle, roundedRectangle, ellipse
     public static func == (a: SwiftyDraw.SwiftyDrawView.ShapeType, b: SwiftyDraw.SwiftyDrawView.ShapeType) -> Swift.Bool
@@ -128,30 +129,30 @@ public enum BlendMode : Swift.String, Swift.Codable {
     public var isFillPath: Swift.Bool
     public init(path: CoreGraphics.CGMutablePath, brush: SwiftyDraw.Brush, isFillPath: Swift.Bool)
   }
-  @objc override dynamic public init(frame: CoreGraphics.CGRect)
-  @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
-  @objc override dynamic open func draw(_ rect: CoreGraphics.CGRect)
-  @objc override dynamic open func touchesBegan(_ touches: Swift.Set<UIKit.UITouch>, with event: UIKit.UIEvent?)
-  @objc override dynamic open func touchesMoved(_ touches: Swift.Set<UIKit.UITouch>, with event: UIKit.UIEvent?)
-  @objc override dynamic open func touchesEnded(_ touches: Swift.Set<UIKit.UITouch>, with event: UIKit.UIEvent?)
-  @objc override dynamic open func touchesCancelled(_ touches: Swift.Set<UIKit.UITouch>, with event: UIKit.UIEvent?)
-  public func display(drawItems: [SwiftyDraw.SwiftyDrawView.DrawItem])
-  public var canUndo: Swift.Bool {
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreGraphics.CGRect)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func draw(_ rect: CoreGraphics.CGRect)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func touchesBegan(_ touches: Swift.Set<UIKit.UITouch>, with event: UIKit.UIEvent?)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func touchesMoved(_ touches: Swift.Set<UIKit.UITouch>, with event: UIKit.UIEvent?)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func touchesEnded(_ touches: Swift.Set<UIKit.UITouch>, with event: UIKit.UIEvent?)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func touchesCancelled(_ touches: Swift.Set<UIKit.UITouch>, with event: UIKit.UIEvent?)
+  @_Concurrency.MainActor(unsafe) public func display(drawItems: [SwiftyDraw.SwiftyDrawView.DrawItem])
+  @_Concurrency.MainActor(unsafe) public var canUndo: Swift.Bool {
     get
   }
-  public var canRedo: Swift.Bool {
+  @_Concurrency.MainActor(unsafe) public var canRedo: Swift.Bool {
     get
   }
-  public func undo()
-  public func redo()
-  public func clear()
+  @_Concurrency.MainActor(unsafe) public func undo()
+  @_Concurrency.MainActor(unsafe) public func redo()
+  @_Concurrency.MainActor(unsafe) public func clear()
   @objc deinit
 }
 @available(iOS 12.1, *)
-extension SwiftyDrawView : UIKit.UIPencilInteractionDelegate {
-  @objc dynamic public func pencilInteractionDidTap(_ interaction: UIKit.UIPencilInteraction)
+extension SwiftyDraw.SwiftyDrawView : UIKit.UIPencilInteractionDelegate {
+  @_Concurrency.MainActor(unsafe) @objc dynamic public func pencilInteractionDidTap(_ interaction: UIKit.UIPencilInteraction)
 }
-extension SwiftyDrawView.DrawItem : Swift.Codable {
+extension SwiftyDraw.SwiftyDrawView.DrawItem : Swift.Codable {
   public init(from decoder: Swift.Decoder) throws
   public func encode(to encoder: Swift.Encoder) throws
 }
