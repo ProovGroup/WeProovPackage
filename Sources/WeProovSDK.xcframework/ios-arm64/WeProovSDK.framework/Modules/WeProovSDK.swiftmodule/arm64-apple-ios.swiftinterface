@@ -387,7 +387,7 @@ extension WeProovSDK.WPReportDownloader : Wprv.ReportFullDelegateProtocol {
   @_Concurrency.MainActor(unsafe) open func endRefreshing()
   @objc deinit
 }
-@_hasMissingDesignatedInitializers @objc public class WPReport : ObjectiveC.NSObject {
+@objc public class WPReport : ObjectiveC.NSObject {
   @objc public enum ReportState : Swift.Int {
     case pendingFirst, pendingSecond, finished
     public init?(rawValue: Swift.Int)
@@ -409,6 +409,7 @@ extension WeProovSDK.WPReportDownloader : Wprv.ReportFullDelegateProtocol {
   public var canBeSaved: Swift.Bool {
     get
   }
+  public init(wpReport: Wprv.ReportStruct)
   @objc public func state() -> WeProovSDK.WPReport.ReportState
   public func importItem(item: Wprv.ItemsStruct, pictures: Swift.Bool)
   @objc deinit
