@@ -71,12 +71,13 @@
 		managerLock est le mutex pour proteger la variable
  */
 @property (nonatomic) id<PulldownloadManagerDelegate> _Nullable manager;
+- (BOOL)downloadAdditionalCalque:(long)id_ templateId:(long)templateId processId:(long)processId num:(long)num;
 /**
  * 	Download un calque grace a son id (cached_id)
 	une fois terminer la fonction OnCalqueSuccess
 	du delegate sera appeler
  */
-- (BOOL)downloadCalque:(long)id_;
+- (BOOL)downloadCalque:(long)id_ templateId:(long)templateId processId:(long)processId;
 /**
  * 	Download l'image en signalent que l'image sera un dropin
 

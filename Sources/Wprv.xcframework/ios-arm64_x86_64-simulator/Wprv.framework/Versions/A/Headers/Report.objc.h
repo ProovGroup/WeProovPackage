@@ -693,6 +693,14 @@
 // skipped field Process.TempMetaData with unsupported type: github.com/ProovGroup/weproov-sdk-go/report.ImageMetaData
 
 @property (nonatomic) BOOL needToDelete;
+// skipped field Process.IAModels with unsupported type: []string
+
+@property (nonatomic) NSString* _Nonnull iaReturn;
+@property (nonatomic) long iaReturnTRID;
+@property (nonatomic) NSString* _Nonnull iaReturnTranslated;
+@property (nonatomic) NSString* _Nonnull iaDropOffReturn;
+@property (nonatomic) long iaDropOffTRID;
+@property (nonatomic) NSString* _Nonnull iaDropOffReturnTranslated;
 - (void)addInfoDamage:(ReportProcessInfosDamages* _Nullable)infoDamage;
 /**
  * 	Ajout d'une information
@@ -710,9 +718,13 @@
 - (ReportProcessInfos* _Nullable)dropoffInfosGet:(long)num;
 - (void)duplicateInfoDamages;
 - (ReportCProcess* _Nullable)getAdditionalPictureProcess:(long)index;
+- (long)getAdditionalPictureProcessID:(long)index;
+- (NSString* _Nonnull)getDropinReturnIA;
 - (ReportProcessInfosDamages* _Nullable)getDropoffInfosDamages:(long)num;
 - (NSString* _Nonnull)getDropoffPicturePath;
 - (NSString* _Nonnull)getDropoffPicturePathS3;
+- (NSString* _Nonnull)getDropoffReturnIA;
+- (NSString* _Nonnull)getIAModels;
 - (ReportProcessInfosDamages* _Nullable)getInfosDamages:(long)num;
 - (ReportChange* _Nullable)getLastChange;
 - (NSString* _Nonnull)getPicturePath;
@@ -725,6 +737,7 @@
  */
 - (long)getProcessCachedId;
 - (ReportStruct* _Nullable)getReport;
+- (NSString* _Nonnull)getReturnIA;
 - (NSString* _Nonnull)getTempPath;
 // skipped method Process.GetTmpMeta with unsupported parameter or return types
 
@@ -768,6 +781,7 @@
 - (void)saveHandler:(id<ReportChangeHandler> _Nullable)h;
 - (void)setCompared:(BOOL)to;
 - (void)setInfoDamage:(long)index choice:(long)choice description:(NSString* _Nullable)description x:(double)x y:(double)y width:(double)width height:(double)height;
+- (void)setReturnIA:(NSString* _Nullable)value;
 - (void)setTemplateMode;
 - (NSString* _Nonnull)titleTr;
 - (long)uid;
@@ -857,7 +871,6 @@
 - (BOOL)removeLastAnswer:(NSError* _Nullable* _Nullable)error;
 - (void)removeLink;
 - (void)removeTemporary;
-- (void)resetID;
 - (BOOL)setAnswer:(NSString* _Nullable)answer error:(NSError* _Nullable* _Nullable)error;
 - (void)updatePicturesByItem:(ItemsDamage* _Nullable)item;
 - (NSString* _Nonnull)writeImage:(NSData* _Nullable)data error:(NSError* _Nullable* _Nullable)error;
@@ -1041,6 +1054,7 @@
 - (long)getCountAllPicture;
 - (long)getCountAllPictureRequire;
 - (long)getCountAllSignatories;
+- (long)getCountSetIaReturn;
 - (NSString* _Nonnull)getDescriptionTr;
 - (NSString* _Nonnull)getDropoffFinishedAt;
 - (int64_t)getDropoffFinishedAtUnix;
@@ -1453,6 +1467,8 @@ FOUNDATION_EXPORT NSString* _Nonnull ReportGetCurrentStr(void);
 
 FOUNDATION_EXPORT void ReportGetFromTemplate(BOOL forceRefresh, long id_, id<ReportFullDelegate> _Nullable delegate);
 
+FOUNDATION_EXPORT void ReportGetFromTemplateWithFields(long id_, NSString* _Nullable fields, id<ReportFullDelegate> _Nullable delegate);
+
 FOUNDATION_EXPORT void ReportGetItemList(long itemId, NSString* _Nullable states, NSString* _Nullable find, long offset, long limit, id<ReportListDelegate> _Nullable delegate);
 
 FOUNDATION_EXPORT ReportList* _Nullable ReportGetItemListSync(long itemId, NSString* _Nullable states, NSString* _Nullable find, long offset, long limit, NSError* _Nullable* _Nullable error);
@@ -1490,6 +1506,8 @@ FOUNDATION_EXPORT ReportStruct* _Nullable ReportNewByStringReport(NSString* _Nul
 FOUNDATION_EXPORT ReportStruct* _Nullable ReportNewByStringTemplate(NSString* _Nullable templateStr, NSError* _Nullable* _Nullable error);
 
 FOUNDATION_EXPORT ReportStruct* _Nullable ReportNewByTemplate(BOOL forceRefresh, long templateId, NSError* _Nullable* _Nullable error);
+
+FOUNDATION_EXPORT ReportStruct* _Nullable ReportNewByTemplateWithFields(long templateId, NSString* _Nullable fields, NSError* _Nullable* _Nullable error);
 
 FOUNDATION_EXPORT ReportProcessInfosDamages* _Nullable ReportNewProcessInfosDamage(long choice, NSString* _Nullable description, double x, double y, double width, double height);
 

@@ -59,7 +59,7 @@
  * 	recupere un cached image depuis l'api
 	de facons asynchrone
  */
-FOUNDATION_EXPORT void CachedimageGet(long id_, id<CachedimageDelegate> _Nullable delegate);
+FOUNDATION_EXPORT void CachedimageGet(long id_, NSString* _Nullable uri, id<CachedimageDelegate> _Nullable delegate);
 
 /**
  * 	permet de recuperer une data d'une image directement
@@ -80,13 +80,13 @@ FOUNDATION_EXPORT NSString* _Nonnull CachedimageGetPathThumb(long id_);
  * 	recupere un cached image depuis l'api
 	de facons synchrone
  */
-FOUNDATION_EXPORT CachedimageStruct* _Nullable CachedimageGetSync(long id_, NSError* _Nullable* _Nullable error);
+FOUNDATION_EXPORT CachedimageStruct* _Nullable CachedimageGetSync(long id_, NSString* _Nullable uri, NSError* _Nullable* _Nullable error);
 
 /**
  * 	recupere un cached image depuis l'api
 	de façons asynchrone
  */
-FOUNDATION_EXPORT void CachedimageGetThumb(long id_, id<CachedimageDelegate> _Nullable delegate);
+FOUNDATION_EXPORT void CachedimageGetThumb(long id_, NSString* _Nullable uri, id<CachedimageDelegate> _Nullable delegate);
 
 /**
  * 	enregistre dans le cache le l'image au format fichier

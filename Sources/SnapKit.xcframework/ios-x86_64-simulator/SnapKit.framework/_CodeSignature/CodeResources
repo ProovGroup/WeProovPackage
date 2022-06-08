@@ -6,7 +6,7 @@
 	<dict>
 		<key>Headers/SnapKit-Swift.h</key>
 		<data>
-		BWfCOfbyAXvldLoSwSqx6UqGCwE=
+		J+Djw2cYziiq46+lnvToqnFCj2U=
 		</data>
 		<key>Headers/SnapKit-umbrella.h</key>
 		<data>
@@ -14,19 +14,19 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		EcnuJ6ZDwSQu0+mn5s093UhgwuQ=
+		lrkgN0rB7QWjc1m3FJ/IHhZeOtQ=
 		</data>
 		<key>Modules/SnapKit.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
 		<data>
-		nAjngPJOYuAumIB3WktsXRGlHUQ=
+		jGtvD9OXT9xWMDODtk5aYAilqEk=
 		</data>
 		<key>Modules/SnapKit.swiftmodule/x86_64-apple-ios-simulator.swiftinterface</key>
 		<data>
-		47lBMwIKHEaanG9lDxkOQy7J7oM=
+		WB+P/pBXWZfvEXuTubAwo6Mrkos=
 		</data>
 		<key>Modules/SnapKit.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		j1fg/gd/QM1DREcgX/Z3iCcv5Dc=
+		GhdHuFfnjDK6zRxweLFqJEjq2V8=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -39,11 +39,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			BWfCOfbyAXvldLoSwSqx6UqGCwE=
+			J+Djw2cYziiq46+lnvToqnFCj2U=
 			</data>
 			<key>hash2</key>
 			<data>
-			fi+LSWRZYa+Nc+2yRVgfRPm3YqULYWZSRKXWbF5R0go=
+			E0uLN53d/MWyuMpVL94qepbfv8uNiJgql3h911bKAL0=
 			</data>
 		</dict>
 		<key>Headers/SnapKit-umbrella.h</key>
@@ -61,33 +61,33 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			nAjngPJOYuAumIB3WktsXRGlHUQ=
+			jGtvD9OXT9xWMDODtk5aYAilqEk=
 			</data>
 			<key>hash2</key>
 			<data>
-			k9N91uJnuCpkLH42mrp8R3/RwuMS1e1njP1fSHHczNM=
+			dJlDE8WUIPEhEBtAXuQVbIC5nzgpxB74DgKckmj0+Ak=
 			</data>
 		</dict>
 		<key>Modules/SnapKit.swiftmodule/x86_64-apple-ios-simulator.swiftinterface</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			47lBMwIKHEaanG9lDxkOQy7J7oM=
+			WB+P/pBXWZfvEXuTubAwo6Mrkos=
 			</data>
 			<key>hash2</key>
 			<data>
-			5f9vhuwfOjYAe+uxQgP4CBue/FfunpaNoYEJPQb94Sw=
+			o82x872TJY6Qkvtryvk5POqN0ChzgaDUZP7HPxMYyL4=
 			</data>
 		</dict>
 		<key>Modules/SnapKit.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			j1fg/gd/QM1DREcgX/Z3iCcv5Dc=
+			GhdHuFfnjDK6zRxweLFqJEjq2V8=
 			</data>
 			<key>hash2</key>
 			<data>
-			xg2jjdNsz5ebTQr1Akrln+iGHVyvM4/JLhxNdsMfxhw=
+			qy4MldMMTRI/MJjut9n2NwtZ/42A2MeKUfFB231MTXk=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>

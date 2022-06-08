@@ -51,6 +51,7 @@
 - (NSString* _Nonnull)getDescriptionTr;
 - (void)getFullJsonString:(BOOL)forceRefresh delegate:(id<TemplatesTemplateDelegate> _Nullable)delegate;
 - (NSString* _Nonnull)getFullJsonStringSync:(BOOL)forceRefresh error:(NSError* _Nullable* _Nullable)error;
+- (NSString* _Nonnull)getFullJsonStringWithFieldsSync:(NSString* _Nullable)fields error:(NSError* _Nullable* _Nullable)error;
 - (NSString* _Nonnull)getTitleTr;
 - (BOOL)haveInCache;
 - (void)removeAllCache;
@@ -58,6 +59,8 @@
 @end
 
 FOUNDATION_EXPORT NSString* _Nonnull TemplatesGetFullJsonStringSync(BOOL forceRefresh, long id_, NSError* _Nullable* _Nullable error);
+
+FOUNDATION_EXPORT NSString* _Nonnull TemplatesGetFullJsonStringWithFieldsSync(long id_, NSString* _Nullable fields, NSError* _Nullable* _Nullable error);
 
 FOUNDATION_EXPORT TemplatesTemplate* _Nullable TemplatesNewObject(NSString* _Nullable str);
 

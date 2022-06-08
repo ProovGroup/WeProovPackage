@@ -6,7 +6,7 @@
 	<dict>
 		<key>Headers/SwiftyDraw-Swift.h</key>
 		<data>
-		UOAIrxjtawfjpYrfBOVEbHEFwvY=
+		TAurkQlO0hE3HY0IcpQ1bI9FvNU=
 		</data>
 		<key>Headers/SwiftyDraw-umbrella.h</key>
 		<data>
@@ -14,19 +14,19 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		QMi9uB5mY80U55b326F8ywyj0pI=
+		REtJzroSin7gQjW1Vxpu5+9PNVM=
 		</data>
 		<key>Modules/SwiftyDraw.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
 		<data>
-		SuRmjWJnggIVWvx3k6kAdBSpcdM=
+		q8ka8au0tqNiSSuFeQBPrYo3h4Q=
 		</data>
 		<key>Modules/SwiftyDraw.swiftmodule/x86_64-apple-ios-simulator.swiftinterface</key>
 		<data>
-		rQaQJPB4NwyyDtzibgkYUSihDuE=
+		tZi6l/kW9w2ATgd8jxOFizPZemA=
 		</data>
 		<key>Modules/SwiftyDraw.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		e177ZILu8QadbasSTcZy6OcqyWg=
+		S1dPWL82jx2MC1u1mzoma3zmi4s=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -39,11 +39,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			UOAIrxjtawfjpYrfBOVEbHEFwvY=
+			TAurkQlO0hE3HY0IcpQ1bI9FvNU=
 			</data>
 			<key>hash2</key>
 			<data>
-			cRyi58d+Of2oTyNNeYfEphUVX/VCY6mh1Epbz6UdXP8=
+			WpTAoNyzO/82fb9JaWXrPr9wd2MGZHKFOQiMpH2rAC0=
 			</data>
 		</dict>
 		<key>Headers/SwiftyDraw-umbrella.h</key>
@@ -61,33 +61,33 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			SuRmjWJnggIVWvx3k6kAdBSpcdM=
+			q8ka8au0tqNiSSuFeQBPrYo3h4Q=
 			</data>
 			<key>hash2</key>
 			<data>
-			EMkFoviVk5/VivJb66vSySc7yAG6m9Jh0TqF+5DpVCY=
+			rfJS0+fCmr3btsBuUDg8wAouyuQmkJxOkEKpx/nQzPw=
 			</data>
 		</dict>
 		<key>Modules/SwiftyDraw.swiftmodule/x86_64-apple-ios-simulator.swiftinterface</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			rQaQJPB4NwyyDtzibgkYUSihDuE=
+			tZi6l/kW9w2ATgd8jxOFizPZemA=
 			</data>
 			<key>hash2</key>
 			<data>
-			GBBvWwgd8KYmebJ6SHJxfQ0vl4xFVm/SpMax/BZgM6U=
+			5pkPGuIGC/X19c5dT+s7eTfBaX1Sb3EVcD13myuESG0=
 			</data>
 		</dict>
 		<key>Modules/SwiftyDraw.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			e177ZILu8QadbasSTcZy6OcqyWg=
+			S1dPWL82jx2MC1u1mzoma3zmi4s=
 			</data>
 			<key>hash2</key>
 			<data>
-			tvp1QIE10bypOGJfVOwVaZcJid5L14F0gic3zKOnfeg=
+			Puhk3PKfedlEl66n5uUiCX8FRtHigwOwby4DXi0J8xk=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>

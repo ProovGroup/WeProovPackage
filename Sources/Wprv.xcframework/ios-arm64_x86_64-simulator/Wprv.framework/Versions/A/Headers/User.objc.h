@@ -95,21 +95,14 @@
 @property (nonatomic) NSString* _Nonnull cell;
 @property (nonatomic) NSString* _Nonnull primaryColor;
 @property (nonatomic) NSString* _Nonnull address;
-@property (nonatomic) BOOL emailCertified;
 @property (nonatomic) BOOL cellCertified;
 @property (nonatomic) BOOL enterprise;
-@property (nonatomic) BOOL admin;
-@property (nonatomic) BOOL generalTemplate;
-@property (nonatomic) BOOL fleet;
 @property (nonatomic) long enterpriseId;
 @property (nonatomic) long picture;
-@property (nonatomic) long emailTemplate;
 @property (nonatomic) long imageReport;
 @property (nonatomic) NSString* _Nonnull accessToken;
 @property (nonatomic) NSString* _Nonnull cryptoKey;
 @property (nonatomic) NSString* _Nonnull company;
-// skipped field Struct.Extra with unsupported type: []github.com/ProovGroup/weproov-sdk-go/user.ExtraInfos
-
 @property (nonatomic) NSString* _Nonnull lang;
 @property (nonatomic) NSString* _Nonnull country;
 // skipped field Struct.CreatedAt with unsupported type: time.Time
@@ -128,7 +121,7 @@
 /**
  * 	Recupere l'id representant les proprietaires
 	si l'utilisateur fait partie d'une entreprise le owner == user.EnterpriseId
-	sinon le owner == user.Id
+	sinon le owner == user.ID
  */
 - (long)getOwner;
 /**
