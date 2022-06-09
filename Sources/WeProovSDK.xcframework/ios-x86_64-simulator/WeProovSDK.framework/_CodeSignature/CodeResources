@@ -30,7 +30,7 @@
 		</data>
 		<key>Modules/WeProovSDK.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		a9Xx667p9VY21Fvf3rynkv2VZaY=
+		XdS/C7MDPFSt/2+iWeObIKcvlgc=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -228,11 +228,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			a9Xx667p9VY21Fvf3rynkv2VZaY=
+			XdS/C7MDPFSt/2+iWeObIKcvlgc=
 			</data>
 			<key>hash2</key>
 			<data>
-			3e/sN6M/LuM4VLZbankeCn0uPXrkR/iQR+eSLXHclaE=
+			7Z35DY7XLKAQCQXXjAtF3j9XNjwD3ObbAZeF7c1bdvE=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
